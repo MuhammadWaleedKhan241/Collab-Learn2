@@ -55,7 +55,7 @@
 
 <head>
     <!--  Title -->
-    <title>CollabLearn</title>
+    <title>Collab Learn</title>
     <!--  Required Meta Tag -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -66,9 +66,9 @@
     <meta name="keywords" content="NettaAdSoka" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--  Favicon -->
-    <link rel="shortcut icon" type="image/png" href={{asset('images/logos/favicon.ico')}} />
+    <link rel="shortcut icon" type="image/png" href={{ asset('images/logos/favicon.ico') }} />
     <!-- Core Css -->
-    <link id="themeColors" rel="stylesheet" href={{asset('css/style.min.css')}} />
+    <link id="themeColors" rel="stylesheet" href={{ asset('css/style.min.css') }} />
 </head>
 
 <body>
@@ -104,9 +104,9 @@
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
                                             id="name" name="name" value="{{ old('name') }}">
                                         @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
@@ -114,9 +114,9 @@
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
                                             id="email" name="email" value="{{ old('email') }}">
                                         @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
@@ -125,9 +125,9 @@
                                             class="form-control @error('password') is-invalid @enderror" id="password"
                                             name="password" required autocomplete="new-password">
                                         @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
@@ -147,16 +147,16 @@
     </div>
 
     <!--  Import Js Files -->
-    <script src={{asset('assets/libs/jquery/dist/jquery.min.js')}}></script>
-    <script src={{asset('assets/libs/simplebar/dist/simplebar.min.js')}}></script>
-    <script src={{asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}></script>
+    <script src={{ asset('assets/libs/jquery/dist/jquery.min.js') }}></script>
+    <script src={{ asset('assets/libs/simplebar/dist/simplebar.min.js') }}></script>
+    <script src={{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}></script>
 
-    <script src={{asset('assets/js/app.min.js')}}></script>
-    <script src={{asset('assets/js/app.init.js')}}></script>
-    <script src={{asset('assets/js/app-style-switcher.js')}}></script>
-    <script src={{asset('assets/js/sidebarmenu.js')}}></script>
+    <script src={{ asset('assets/js/app.min.js') }}></script>
+    <script src={{ asset('assets/js/app.init.js') }}></script>
+    <script src={{ asset('assets/js/app-style-switcher.js') }}></script>
+    <script src={{ asset('assets/js/sidebarmenu.js') }}></script>
 
-    <script src={{asset('assets/js/custom.js')}}></script>
+    <script src={{ asset('assets/js/custom.js') }}></script>
 </body>
 
 </html>

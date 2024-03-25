@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('case_studies', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('sessionId');
+            $table->unsignedBigInteger('session-id');
             $table->string('title');
             $table->string('sector');
             $table->string('country');
-            $table->string('models_and_frameworks');
+            $table->string('model');
+            $table->string('')
             $table->string('file');
             $table->timestamps();
 

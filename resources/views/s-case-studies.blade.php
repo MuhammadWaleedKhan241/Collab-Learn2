@@ -195,10 +195,14 @@
                                                         placeholder="Country" aria-label="First name">
                                                 </div>
                                                 <div class="col-6 mb-3">
-                                                    <input type="text" class="form-control"
-                                                        name="models_and_framework"
+                                                    <input type="text" class="form-control" name=""
                                                         placeholder="Models and frameworks" aria-label="Last name">
                                                 </div>
+                                                <div class="col-6 mb-3">
+                                                    <input type="text" class="form-control" name=""
+                                                        placeholder="Models and frameworks" aria-label="Last name">
+                                                </div>
+
                                                 <div class="col-6 mb-3">
                                                     <div class="mb-3">
                                                         <label for="formFile" class="form-label">Attach file</label>
@@ -233,24 +237,25 @@
                                         </tr>
                                     </thead>
                                     <tbody class="text-dark ">
-                                        {{-- <tr>
+                                        <tr>
                                             <div class="container">
-                                                <h1>Submitted Case Studies</h1>
-                                                @foreach ($submittedCaseStudies as $caseStudy)
+                                                @foreach ($data as $records)
                                                     <div class="card mb-3">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">{{ $caseStudy->title }}</h5>
+                                                            <h5 class="card-title">{{ $records->title }}</h5>
                                                             <p class="card-text"><strong>Sector:</strong>
-                                                                {{ $caseStudy->sector }}</p>
+                                                                {{ $records->sector }}</p>
                                                             <p class="card-text"><strong>Country:</strong>
-                                                                {{ $caseStudy->country }}</p>
+                                                                {{ $records->country }}</p>
                                                             <p class="card-text"><strong>Attach File:</strong>
-                                                                {{ $caseStudy->country }}</p>
+                                                                {{ $records->country }}</p>
+                                                            <p class="card-text"><strong>Approved</strong>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 @endforeach
                                             </div>
-                                        </tr> --}}
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

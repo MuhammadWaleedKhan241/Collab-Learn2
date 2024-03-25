@@ -146,7 +146,7 @@ Route::prefix('teacher')->group(function () {
 
 
         Route::get('/readComments', [TeacherCommentController::class, 'show'])->name('teacher.comments');
-        Route::post('/form-submit', [TeacherResourceController::class, 'store'])->name('form.submit');
+        // Route::post('/form-submit', [TeacherResourceController::class, 'store'])->name('form.submit');
 
 
         //Route::get('/readComments/{session}/{studentId}', [TeacherCommentController::class, 'show'])->name('teacher.comments');
@@ -173,12 +173,13 @@ Route::prefix('student')->group(function () {
 
     Route::middleware('auth')->group(function () {
         Route::get('/casestudies', [StudentMyCaseStudyController::class, 'show'])->name('student.casestudy');
+        Route::post('/submit', [StudentMyCaseStudyController::class, 'store'])->name('student.submit.casestudy');
         Route::get('/all-casestudies', [StudentAllcasestudyController::class, 'show'])->name('student.allcasestudies');
         Route::get('/feedback', [StudentFeedbackController::class, 'show'])->name('student.feedback');
         Route::get('/comment', [StudentMyCaseStudyCommentController::class, 'show'])->name('casestudiescomment');
-        Route::post('/store_data', [StudentFeedbackController::class, 'store'])->name('feedback.store');
-        Route::post('/submit', [StudentMyCaseStudyController::class, 'store'])->name('student.submit.casestudy');
-        Route::get('/submitted-case-studies', [StudentMyCaseStudyController::class, 'showSubmittedCaseStudies'])->name('submitted.case.studies');
+        Route::post('/store-data', [StudentFeedbackController::class, 'store'])->name('feedback.store');
+
+        // Route::get('/submitted-case-studies', [StudentMyCaseStudyController::class, 'showSubmittedCaseStudies'])->name('submitted.case.studies');
 
         // Route::get('profile',[StudentProfileController::class, 'show'])->name('auth.profile');
         // Route::get('/profile', [StudentProfileController::class, 'edit'])->name('profile.edit');
