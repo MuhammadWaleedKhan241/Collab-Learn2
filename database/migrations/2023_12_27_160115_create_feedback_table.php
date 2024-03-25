@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('experience')->notNullable();
             $table->string('educatuionYear')->notNullable();
             $table->string('sectorexperiance')->notNullable();
-            $table->string('geoLocation')->notNullable();
+            $table->string('geolocation')->notNullable();
             $table->string('useexperiencebefore')->notNullable();
-            $table->string('usefull')->notNullable();
+            $table->string('useful')->notNullable();
             $table->string('ownbackexpunderstandingstratmang')->notNullable();
             $table->string('understandingsm')->notNullable();
             $table->string('explainyourlearn')->notNullable();

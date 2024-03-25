@@ -16,15 +16,15 @@ return new class extends Migration
             $table->unsignedBigInteger('session-id');
             $table->string('title');
             $table->string('sector');
-            $table->string('country');
+            $table->string('framework');
             $table->string('model');
-            $table->string('')
+            $table->string('models');
             $table->string('file');
-            $table->timestamps();
+            $table->timestamps('');
 
 
             $table->foreign('id')->references('id')->on('users')->onDelete('CASCADE');
-            $table->foreign('SessionId')->references('id')->on('sessions')->onDelete('CASCADE');
+            $table->foreign('Session-id')->references('id')->on('sessions')->onDelete('CASCADE');
         });
     }
 

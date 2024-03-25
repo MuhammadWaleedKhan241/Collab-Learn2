@@ -9,20 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create('session_teacher', function (Blueprint $table) {
-        $table->id();
-        $table->unsignedBigInteger('teacher_id');
-        $table->unsignedBigInteger('session_id');
-        $table->timestamp('added_on')->nullable();
+    // public function up(): void
+    // {
+    //     Schema::create('session_teacher', function (Blueprint $table) {
+    //         $table->id();
+    //         $table->unsignedBigInteger('teacher_id');
+    //         $table->unsignedBigInteger('session_id');
+    //         $table->timestamp('added_on')->nullable();
 
-        $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
-        $table->foreign('session_id')->references('id')->on('sessions')->onDelete('cascade');
-
-
-        });
-    }
+    //         $table->foreign('teacher_i  d')->references('id')->on('teachers')->onDelete('cascade');
+    //         $table->foreign('session_id')->references('id')->on('sessions')->onDelete('cascade');
+    //     });
+    // }
 
     /**
      * Reverse the migrations.

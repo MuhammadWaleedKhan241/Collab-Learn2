@@ -23,10 +23,11 @@ class AddResourcesController extends Controller
         ]);
 
 
-        $data = new Resources();
-        $data->file_title = $request->input('file_title');
-        $data->file_name = $request->input('file_name');
-        $data->save();
+        $resource = new Resources();
+        $resource->file_title = $request->input('file_title');
+        $resource->file_name = $request->input('file_name');
+        $resource->session_id = $request->input('session_Id'); // Assuming session_id is provided in the request
+        $resource->save();
 
         return redirect()->route('admin.resource')->with('success', 'Resource added successfully!');
     }

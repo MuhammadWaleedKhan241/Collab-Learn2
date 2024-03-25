@@ -172,7 +172,7 @@
                                                 @foreach ($data as $item)
                                                     <tr>
                                                         <td class="border-0 ps-0 text-truncate">
-                                                            <h5>{{ $item->sessioncode }}</h5>
+                                                            <h5>{{ $item->year }}</h5>
                                                             <!-- Assuming 'year' is a field in your database -->
                                                         </td>
                                                         <td class="border-0">

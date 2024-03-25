@@ -146,11 +146,11 @@
             </header>
             <div class="container-fluid bg-light">
                 <p class="fs-7 fw-bolder">Enter Feedback</p>
-                @if ($errors->any())
+                {{-- @if ($errors->any())
                     @foreach ($errors->all() as $error)
                         <div class="alert alert-danger">{{ $error }}</div>
                     @endforeach
-                @endif
+                @endif --}}
                 <div class="container mt-3 ">
                     <div class="row justify-between align-items-center">
                         <form action="{{ route('feedback.store') }}" method="POST"

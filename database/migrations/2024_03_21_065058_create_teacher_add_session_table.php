@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('teacher_add_session', function (Blueprint $table) {
             $table->id();
+            $table->year('year')->default(date('Y'));
             $table->integer('sessioncode');
             $table->string('attribute1');
             $table->string('attribute2');

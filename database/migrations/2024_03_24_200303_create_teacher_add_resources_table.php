@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('file_name');
             $table->timestamps();
 
-            $table->foreign('session_id')->references('session_id')->on('session_teacher')->onDelete('cascade');
+            // $table->foreign('session_id')->references('session_id')->on('session_teacher')->onDelete('cascade');
         });
     }
 

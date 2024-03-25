@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ManagesessionController extends controller
 {
+
+
+
+
     public function show()
     {
         $data = AddSession::all();

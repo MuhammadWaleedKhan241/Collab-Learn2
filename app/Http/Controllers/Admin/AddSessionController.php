@@ -29,7 +29,8 @@ class AddSessionController extends controller
 
         $data = new AddSession();
 
-        $data->year = $request->input('year');
+        // $data->year = $request->input('year');
+        $data->year = date('Y');
         $data->sessioncode = $request->input('sessioncode');
         $data->attribute1 = $request->input('attribute1');
         $data->attribute2 = $request->input('attribute2');
