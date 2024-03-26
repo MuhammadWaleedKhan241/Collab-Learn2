@@ -3,7 +3,7 @@
 
 <head>
     <!--  Title -->
-    <title>Collab learn</title>
+    <title>Collab Learn</title>
     <!--  Required Meta Tag -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -80,7 +80,7 @@
                     </div>
                     <div class=" col-11 col-sm-5 col-md-3 d-flex justify-content-between flex-column ">
                         <p class=" fw-semibold fs-4">Number of years of formal education: </p>
-                        <p class=" pfont">{{ $data->educationyear }}</p>
+                        <p class=" pfont">{{ $data->educationYear }}</p>
                     </div>
                     <div class=" col-11 col-sm-5 col-md-3 d-flex justify-content-between flex-column">
                         <p class=" fw-semibold fs-4">Which geographical location are you referring to you in your case
@@ -96,7 +96,7 @@
                     </div>
                     <div class=" col-11  col-md-3 d-flex justify-content-between flex-column">
                         <p class="fw-semibold fs-4">Did you find it useful?</p>
-                        <p>{{ $data->usefull }}</p>
+                        <p>{{ $data->useful }}</p>
                     </div>
                     <div class="col-11 d-flex justify-content-between flex-column">
                         <p class="fw-semibold fs-4">Did using your own background experience help you understand

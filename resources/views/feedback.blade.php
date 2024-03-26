@@ -3,7 +3,7 @@
 
 <head>
     <!--  Title -->
-    <title>Collab learn</title>
+    <title>Collab Learn</title>
     <!--  Required Meta Tag -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,27 +14,12 @@
     <meta name="keywords" content="NettaAdSoka" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--  Favicon -->
-    {{--
-  <link rel="shortcut icon" type="image/png" href={{asset('images/logos/favicon.ico')}} />
-  <link id="themeColors" rel="stylesheet" href={{asset('css/style.min.css')}} />
-  <link href={{asset('https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css')}} rel="stylesheet">
-
-  <script src={{asset('https://cdn.tailwindcss.com')}}></script>
-  <link href={{asset('//cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css')}} />
-
-  <!-- Owl Carousel -->
-  <link rel="stylesheet" href={{asset('libs/owl.carousel/dist/assets/owl.carousel.min.css')}}>
-  <!-- Core Css -->
-  <link id="themeColors" rel="stylesheet" href={{asset('css/style.min.css')}} /> --}}
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon.ico') }}" />
     <!-- Core Css -->
     <link id="themeColors" rel="stylesheet" href={{ asset('css/style.min.css') }} />
     <link href={{ asset('https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css') }} rel="stylesheet">
-
     <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jqvmap.min.css') }}">
-
     <link href={{ asset('//cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css') }} />
-
     <link rel="stylesheet" href={{ asset('https://unpkg.com/leaflet/dist/leaflet.css') }} />
     <link rel="stylesheet" href={{ asset('css/style.min.css') }}>
 </head>
@@ -128,7 +113,7 @@
                                                 <td>{{ $record->gender }}</td>
                                                 <td>{{ $record->age }}</td>
                                                 <td>{{ $record->experience }}</td>
-                                                <td>{{ $record->educationyear }}</td>
+                                                <td>{{ $record->educationYear }}</td>
                                                 <td>{{ $record->geolocation }}</td>
                                                 <th><a
                                                         href="{{ route('admin.feedback-detail', ['id' => $record->id]) }}"><i
@@ -142,55 +127,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                            {{-- <div class="table-responsive table-striped table-hover ">
-                <table class="table text-nowrap align-middle mb-0 table-striped table-hover ">
-                  <thead>
-                    <tr>
-                      <th>User Id</th>
-                      <th class="ps-0">Student Name</th>
-                      <th>Gender</th>
-                      <th>Age</th>
-                      <th>Experience</th>
-                      <th>Education Year</th>
-                      <th>Sector Experience</th>
-                      <th>Geo location</th>
-                      <th>Use Exp. Before</th>
-                      <th>Use full</th>
-                      <th>Own Back Exp Understanding Strat Mang. </th>
-                      <th>Understanding SM</th>
-                      <th>Exp. In Your Learn</th>
-                      <th>Back Exp. In Class</th>
-                      <th>Learn From Other</th>
-                      <th>Improved In Future</th>
-                      <th>AnyOther Comment</th>
-                    </tr>
-                  </thead>
-                  <tbody class="text-dark ">
-                    @foreach ($data as $record)
-                    <tr>
-                      <td>{{$record->id}} </td>
-                      <td>{{$record->name}}</td>
-                      <td>{{$record->Gender}}</td>
-                      <td>{{$record->Age}}</td>
-                      <td>{{$record->Experience}}</td>
-                      <td>{{$record->EducatuionYear}}</td>
-                      <td>{{$record->SectorExperiance}}</td>
-                      <td>{{$record->GeoLocation}}</td>
-                      <td>{{$record->UseExpBefore}}</td>
-                      <td>{{$record->Usefull}}</td>
-                      <td>{{$record->OwnBackExpUnderstandingStratMang}}</td>
-                      <td>{{$record->UnderstandingSM}}</td>
-                      <td>{{$record->ExpInYourLearn}}</td>
-                      <td>{{$record->BackExpInClass}}</td>
-                      <td>{{$record->LearnFromOther}}</td>
-                      <td>{{$record->ImprovedInFuture}}</td>
-                      <td>{{$record->AnyOtherComment}}</td>
-                      <td>{{$record->name}}</td>
-                    </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-              </div> --}}
                         </form>
                     </div>
                 </div>

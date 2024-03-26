@@ -15,11 +15,11 @@ class StudentFeedbackController extends Controller
             'gender' => 'required',
             'age' => 'required',
             'experience' => 'required|numeric',
-            'educationyear' => 'required|numeric',
+            'educationYear' => 'required|numeric',
             'sectorexperiance' => 'required',
             'geolocation' => 'required',
             'useexperiencebefore' => 'required',
-            'usefull' => 'required',
+            'useful' => 'required',
             'ownbackexpunderstandingstratmang' => 'required',
             'understandingsm' => 'required',
             'explainyourlearn' => 'required',
@@ -27,15 +27,35 @@ class StudentFeedbackController extends Controller
             'learnfromother' => 'required',
             'improvedinfuture' => 'required',
             'anyothercomment' => 'required',
-            'permission' => 'required'
+            // 'permission' => 'required'
         ]);
 
-        // Create a new Feedback instance and fill it with validated data
-        // Create a new Feedback instance with fillable data only
-        $feedback = Feedback::create($validatedData);
+        // $feedback = Feedback::create($validatedData);
+
+        $data = new Feedback();
+
+        $data->name = $request->input('name');
+        $data->gender = $request->input('gender');
+        $data->experience = $request->input('experience');
+        $data->educationYear = $request->input('educationYear');
+        $data->sectorexperiance = $request->input('sectorexperiance');
+        $data->geolocation = $request->input('geolocation');
+        $data->useexperiencebefore = $request->input('useexperiencebefore');
+        $data->useful = $request->input('useful');
+        $data->ownbackexpunderstandingstratmang = $request->input('ownbackexpunderstandingstratmang');
+        $data->understandingsm = $request->input('understandingsm');
+        $data->explainyourlearn = $request->input('explainyourlearn');
+        $data->backexperienceinclass = $request->input('backexperienceinclass');
+        $data->learnfromother = $request->input('learnfromother');
+        $data->improvedinfuture = $request->input('improvedinfuture');
+        $data->anyothercomment = $request->input('anyothercomment');
+        $data->permission = $request->input('permission');
+        $data->save();
+
+
 
         // Redirect back with a success message
-        return back()->with('success', 'Feedback submitted successfully!');
+        return redirect()->route('student.casestudy')->with('success', 'Feedback submitted successfully!');
     }
 
     public function show()
