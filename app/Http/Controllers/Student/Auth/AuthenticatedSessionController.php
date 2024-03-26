@@ -26,14 +26,13 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->route('student.casestudy');
+        // return redirect()->intended(RouteServiceProvider::HOME);
     }
     // public function authenticate(): void
     // {
-        // $this->ensureIsNotRate  Limited();
+    // $this->ensureIsNotRate  Limited();
     //     if (!Auth::guard('web')->attempt($this->only('sessioncode','email', 'password'), $this->boolean('remember'))) {
     //         RateLimiter::hit($this->throttleKey());
 
@@ -78,7 +77,7 @@ class AuthenticatedSessionController extends Controller
     //     return Redirect::to('/');
     // }
     public function destroy(Request $request): RedirectResponse
-       {
+    {
         Auth::guard('teacher')->logout();
 
         $request->session()->invalidate();
@@ -86,8 +85,5 @@ class AuthenticatedSessionController extends Controller
         // $request->session()->regenerateToken();
 
         return redirect('/');
-    } 
-
-
-    
+    }
 }

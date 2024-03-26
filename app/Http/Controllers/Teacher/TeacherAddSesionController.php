@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Teacher;
 use App\Http\Controllers\Controller;
 use App\Models\Teacher\AddSession;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TeacherAddSesionController extends Controller
 {
@@ -31,6 +32,7 @@ class TeacherAddSesionController extends Controller
         // $data->year = $request->input('year');
         $data->year = date('Y');
         $data->sessioncode = $request->input('sessioncode');
+        $data->teacher_id = Auth::user()->id;
         $data->attribute1 = $request->input('attribute1');
         $data->attribute2 = $request->input('attribute2');
         $data->attribute3 = $request->input('attribute3');

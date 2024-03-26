@@ -13,18 +13,15 @@ return new class extends Migration
     {
         Schema::create('case_studies', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('session-id');
+            $table->unsignedBigInteger('session_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('title');
-            $table->string('sector');
-            $table->string('framework');
-            $table->string('model');
-            $table->string('models');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->timestamps('');
 
 
-            $table->foreign('id')->references('id')->on('users')->onDelete('CASCADE');
-            $table->foreign('Session-id')->references('id')->on('sessions')->onDelete('CASCADE');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
+            $table->foreign('session_id')->references('id')->on('add_sessions')->onDelete('CASCADE');
         });
     }
 

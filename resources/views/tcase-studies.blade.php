@@ -159,26 +159,30 @@
                                         </tr>
                                     </thead>
                                     <tbody class="text-dark ">
-                                        <tr>
-                                            <td>
-                                                <!-- <img src="assets/images/nft/g1.webp" class="rounded img-fluid me-2" width="50" alt="user" /> -->
-                                                <span>2023</span>
-                                            </td>
-                                            <td>
-                                                <span> Language,political discourse Language</span>
-                                            </td>
-                                            <td>
-                                                <a href="#">Download file</a>
-                                            </td>
-                                            <td>
-                                                <h5><b>Smith</b></h5>
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('teacher.comments') }}"
-                                                    class="btn btn-outline-success"><i
-                                                        class="bi bi-chat-square-dots fs-5"></i> </a>
-                                            </td>
-                                        </tr>
+                                        @foreach ($casestudies as $item)
+                                            @foreach ($item->casestudies as $casestudy)
+                                                <tr>
+                                                    <td>
+                                                        <!-- <img src="assets/images/nft/g1.webp" class="rounded img-fluid me-2" width="50" alt="user" /> -->
+                                                        <span>{{ $item->sessioncode }}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{ $casestudy->title }}</span>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#">{{ $casestudy->file }}</a>
+                                                    </td>
+                                                    <td>
+                                                        <h5><b>{{ $casestudy->user?->name }}</b></h5>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('teacher.comments') }}"
+                                                            class="btn btn-outline-success"><i
+                                                                class="bi bi-chat-square-dots fs-5"></i> </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

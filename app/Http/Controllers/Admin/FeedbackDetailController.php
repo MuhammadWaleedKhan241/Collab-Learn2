@@ -11,7 +11,7 @@ class FeedbackDetailController extends controller
 {
     public function show(int $id)
     {
-        $data = Feedback::query()->with('student')->findOrFail($id);
+        $data = Feedback::query()->with('user')->findOrFail($id);
         //  dd($data);
         return view('feedback-Details', ['data' => $data]);
     }

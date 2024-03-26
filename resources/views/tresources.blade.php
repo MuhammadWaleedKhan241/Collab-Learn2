@@ -145,50 +145,6 @@
 
                             <tbody class="text-dark ">
 
-                                {{-- @foreach ($data as $record)
-                                    <div class="card mb-3">
-                                        <div class="card-header">
-                                            Session: {{ $session->year }} - {{ $session->sessioncode }}
-                                        </div>
-                                        <div class="card-body">
-                                            <table class="table text-nowrap align-middle mb-0 gap-3">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="fs-4 fw-bolder">File Title</th>
-                                                        <th class="fs-4 fw-bolder">File Name</th>
-                                                        <th class="fs-4 fw-bolder">Added on</th>
-                                                        <th class="fs-4 fw-bolder">Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="text-dark">
-                                                    @foreach ($session->$data as $record)
-                                                        <tr>
-                                                            <td>{{ $resource->file_title }}</td>
-                                                            <td>{{ $resource->file_name }}</td>
-                                                            <td>{{ $resource->created_at }}</td>
-                                                            <td>
-                                                                <div class="d-flex">
-                                                                    <a href="{{ route('teacher.edit.resource', ['id' => $resource->id]) }}"
-                                                                        class="btn btn-info me-2">Edit</a>
-                                                                    <form
-                                                                        action="{{ route('teacher.delete.resource', ['id' => $resource->id]) }}"
-                                                                        method="post">
-                                                                        @csrf
-                                                                        @method('DELETE')
-                                                                        <button type="submit"
-                                                                            class="btn btn-danger">Delete</button>
-                                                                    </form>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                @endforeach --}}
-
-
                                 @foreach ($data as $record)
                                     <div class="card mb-3">
                                         <div class="card-header">

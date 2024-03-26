@@ -39,8 +39,12 @@ class Feedback extends Model
         'permission'
 
     ];
-    public function student()
+    // public function student()
+    // {
+    //     return $this->belongsTo(ManageStudent::class);
+    // }
+    public function user()
     {
-        return $this->belongsTo(ManageStudent::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

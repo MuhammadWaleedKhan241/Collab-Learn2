@@ -109,7 +109,7 @@
                                     <tbody>
                                         @foreach ($data as $record)
                                             <tr>
-                                                <td>{{ $record->name }}</td>
+                                                <td>{{ $record->user->name }}</td>
                                                 <td>{{ $record->gender }}</td>
                                                 <td>{{ $record->age }}</td>
                                                 <td>{{ $record->experience }}</td>

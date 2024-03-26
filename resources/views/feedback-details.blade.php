@@ -60,6 +60,7 @@
                     <div class="col-11 col-sm-5 col-md-3 d-flex justify-content-between flex-column  pb-0 ">
                         <p class="fw-semibold fs-4"class="fw-semibold">Student Name</p>
                         <p>{{ $data->student?->name }}</p>
+                        {{-- <p> {{ $data->student->name }}</p> --}}
                         {{-- <p>{{$data->student ? $data->student->name : '---'}}</p> --}}
                     </div>
                     <div class="col-11 col-sm-5 col-md-3 d-flex justify-content-between flex-column  pb-0 ">

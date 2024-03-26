@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Teacher extends Authenticatable
 {
-    use HasFactory,Notifiable;
+    use HasFactory, Notifiable;
 
 
     protected $fillable = [
@@ -18,7 +18,11 @@ class Teacher extends Authenticatable
         'email',
         'password',
     ];
-    
-    protected $table= 'teachers';
-    
+
+    protected $table = 'teachers';
+
+    public function sessions()
+    {
+        return $this->hasMany(AddSession::class);
+    }
 }

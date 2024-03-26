@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -8,13 +9,12 @@ use App\Models\Feedback;
 
 class FeedbackController extends controller
 {
-        public function show()
-        {
-         $data = Feedback::all();
-         
-         return view('feedback',['data'=>$data]);
-           
-        }
+    public function show()
+    {
+        $data = Feedback::with('user')->get();
+
+        return view('feedback', ['data' => $data]);
+    }
     //     function show(){
 
     //    $data = Feedback::all();
@@ -24,7 +24,7 @@ class FeedbackController extends controller
 
     //     function show(){
     //     $data = Form::all();
-        
+
     //     return view('feedback',compact('data'));
     // }
 

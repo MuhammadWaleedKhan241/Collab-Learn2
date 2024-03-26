@@ -43,7 +43,6 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav scroll-sidebar" data-simplebar>
                     <ul id="sidebarnav">
-
                         <li i class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">Manage-Sessions</span>
@@ -75,7 +74,8 @@
                                 </span>
                                 <span class="hide-menu">Sessions</span>
                             </a>
-                        </li>
+                    </ul>
+                    </li>
             </div>
         </aside>
         <div class="body-wrapper">

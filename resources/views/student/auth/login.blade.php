@@ -52,14 +52,15 @@
                                     <div class="form-group row">
                                         <label for="email"
                                             class="form-label">{{ __('Session
-                                                                                        Code') }}</label>
+                                                                                                                                                                                                                                                                                                                    Code') }}</label>
 
                                         <div>
                                             <input id="number" type="number"
-                                                class="form-control @error('code') is-invalid @enderror" name="email"
-                                                value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                                class="form-control @error('session_code') is-invalid @enderror"
+                                                name="session_code" value="{{ old('session_code') }}" required
+                                                autofocus>
 
-                                            @error('email')
+                                            @error('session_code')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -70,7 +71,7 @@
                                     <div class="form-group row">
                                         <label for="email"
                                             class="form-label">{{ __('Email
-                                                                                        ') }}</label>
+                                                                                                                                                                                                                                                                                                                    ') }}</label>
                                         <div>
                                             <input id="email" type="email"
                                                 class="form-control @error('email') is-invalid @enderror" name="email"

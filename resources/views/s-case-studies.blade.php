@@ -182,27 +182,30 @@
                                             </div>
                                             <form action="{{ route('student.submit.casestudy') }}" method="POST">
                                                 @csrf
+                                                <input type="hidden" name="session_id" value="{{ $sessions->id }}">
                                                 <div class="col-6 mb-3 form-floating-input">
                                                     <input type="text" class="form-control" name="title"
-                                                        placeholder="Title" aria-label="First name">
-                                                </div>
-                                                <div class="col-6 mb-3">
-                                                    <input type="text" class="form-control" name="sector"
-                                                        placeholder="Sector" aria-label="Last name">
-                                                </div>
-                                                <div class="col-6 mb-3">
-                                                    <input type="text" class="form-control" name="country"
-                                                        placeholder="Country" aria-label="First name">
+                                                        placeholder="Title">
                                                 </div>
                                                 <div class="col-6 mb-3">
                                                     <input type="text" class="form-control" name=""
-                                                        placeholder="Models and frameworks" aria-label="Last name">
+                                                        placeholder="" value="{{ $sessions->attribute1 }}" disabled>
                                                 </div>
                                                 <div class="col-6 mb-3">
                                                     <input type="text" class="form-control" name=""
-                                                        placeholder="Models and frameworks" aria-label="Last name">
+                                                        placeholder="Country" value="{{ $sessions->attribute2 }}"
+                                                        disabled>
                                                 </div>
-
+                                                <div class="col-6 mb-3">
+                                                    <input type="text" class="form-control" name=""
+                                                        placeholder="Models and frameworks"
+                                                        value="{{ $sessions->attribute3 }}" disabled>
+                                                </div>
+                                                <div class="col-6 mb-3">
+                                                    <input type="text" class="form-control" name=""
+                                                        placeholder="Models and frameworks"
+                                                        value="{{ $sessions->attribute4 }}" disabled>
+                                                </div>
                                                 <div class="col-6 mb-3">
                                                     <div class="mb-3">
                                                         <label for="formFile" class="form-label">Attach file</label>
@@ -211,8 +214,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-outline-success"
-                                                        data-bs-dismiss="modal">Submit</button>
+                                                    <button type="submit"
+                                                        class="btn btn-outline-success">Submit</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -240,30 +243,23 @@
                                         <tr>
                                             <div class="container">
                                                 @foreach ($data as $records)
-                                                    <div class="card mb-3">
-                                                        <div class="card-body">
-                                                            <h5 class="card-title">{{ $records->title }}</h5>
-                                                            <p class="card-text"><strong>Sector:</strong>
-                                                                {{ $records->sector }}</p>
-                                                            <p class="card-text"><strong>Country:</strong>
-                                                                {{ $records->country }}</p>
-                                                            <p class="card-text"><strong>Attach File:</strong>
-                                                                {{ $records->country }}</p>
-                                                            <p class="card-text"><strong>Approved</strong>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            </div>
+                                        <tr>
+                                            <td>{{ $records->title }}</td>
+                                            <td>{{ $records->sessions->sessioncode }}</td>
+                                            <td>{{ $records->file }}</td>
+                                            <td></td>
                                         </tr>
-                                    </tbody>
-                                </table>
+                                        @endforeach
                             </div>
+                            </tr>
+                            </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!--  Customizer -->

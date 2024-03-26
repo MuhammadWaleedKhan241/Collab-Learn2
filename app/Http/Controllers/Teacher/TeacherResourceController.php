@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Teacher;
+
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class TeacherResourceController  extends Controller
         return view('tresources');
     }
 
-    
+
     public function store(Request $request)
     {
         // Validate the incoming request data
@@ -23,13 +24,13 @@ class TeacherResourceController  extends Controller
 
         // Process the file upload and other data insertion logic
         // Make sure to handle file uploads appropriately
-        
+
         // Example: store the uploaded file
         $file = $request->file('file');
         $path = $file->store('files');
 
         // Create a new record in the database using the validated data
-        YourModel::create([
+        $data::create([
             'File_Title' => $validatedData['file_title'],
             'File_Name' => $file->getClientOriginalName(),
             'Path' => $path,
