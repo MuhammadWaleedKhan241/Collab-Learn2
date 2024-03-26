@@ -113,7 +113,7 @@
                                                 <td>{{ $record->gender }}</td>
                                                 <td>{{ $record->age }}</td>
                                                 <td>{{ $record->experience }}</td>
-                                                <td>{{ $record->educationYear }}</td>
+                                                <td>{{ $record->educatuionYear }}</td>
                                                 <td>{{ $record->geolocation }}</td>
                                                 <th><a
                                                         href="{{ route('admin.feedback-detail', ['id' => $record->id]) }}"><i

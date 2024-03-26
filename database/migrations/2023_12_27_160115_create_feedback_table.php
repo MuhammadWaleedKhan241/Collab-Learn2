@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('gender')->notNullable();
             $table->enum('age', ['21-25', '26-30', '31-35', '36-40', '41-50']);
-            $table->string('experience')->notNullable();
-            $table->string('educatuionYear')->notNullable();
+            $table->unsignedBigInteger('experience');
+            $table->unsignedBigInteger('educatuionYear');
             $table->string('sectorexperiance')->notNullable();
             $table->string('geolocation')->notNullable();
             $table->string('useexperiencebefore')->notNullable();
@@ -28,9 +29,12 @@ return new class extends Migration
             $table->string('learnfromother')->notNullable();
             $table->string('improvedinfuture')->notNullable();
             $table->string('anyothercomment')->notNullable();
-            $table->string('permission')->notNullable();
+            $table->boolean('permission')->notNullable();
+            $table->timestamps();
 
-            $table->foreign('id')->references('id')->on('users')->onDelete('CASCADE');
+
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
 

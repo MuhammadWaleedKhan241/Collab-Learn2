@@ -11,33 +11,34 @@ class StudentFeedbackController extends Controller
     public function store(Request $request)
     {
 
-        $validatedData = $request->validate([
-            'gender' => 'required',
-            'age' => 'required',
-            'experience' => 'required|numeric',
-            'educationYear' => 'required|numeric',
-            'sectorexperiance' => 'required',
-            'geolocation' => 'required',
-            'useexperiencebefore' => 'required',
-            'useful' => 'required',
-            'ownbackexpunderstandingstratmang' => 'required',
-            'understandingsm' => 'required',
-            'explainyourlearn' => 'required',
-            'backexperienceinclass' => 'required',
-            'learnfromother' => 'required',
-            'improvedinfuture' => 'required',
-            'anyothercomment' => 'required',
-            // 'permission' => 'required'
-        ]);
+        // $validatedData = $request->validate([
+        //     'gender' => 'required',
+        //     'age' => 'required',
+        //     'experience' => 'required|numeric',
+        //     'educationYear' => 'required|numeric',
+        //     'sectorexperiance' => 'required',
+        //     'geolocation' => 'required',
+        //     'useexperiencebefore' => 'required',
+        //     'useful' => 'required',
+        //     'ownbackexpunderstandingstratmang' => 'required',
+        //     'understandingsm' => 'required',
+        //     'explainyourlearn' => 'required',
+        //     'backexperienceinclass' => 'required',
+        //     'learnfromother' => 'required',
+        //     'improvedinfuture' => 'required',
+        //     'anyothercomment' => 'required',
+        //     // 'permission' => 'required'
+        // ]);
 
         // $feedback = Feedback::create($validatedData);
-
+        $user_id = auth()->id();
         $data = new Feedback();
-
-        $data->name = $request->input('name');
+        $data->user_id = $user_id;
+        // $data->name = $request->input('name');
         $data->gender = $request->input('gender');
+        $data->age = $request->input('age');
         $data->experience = $request->input('experience');
-        $data->educationYear = $request->input('educationYear');
+        $data->educatuionYear = $request->input('educatuionYear');
         $data->sectorexperiance = $request->input('sectorexperiance');
         $data->geolocation = $request->input('geolocation');
         $data->useexperiencebefore = $request->input('useexperiencebefore');
@@ -45,16 +46,14 @@ class StudentFeedbackController extends Controller
         $data->ownbackexpunderstandingstratmang = $request->input('ownbackexpunderstandingstratmang');
         $data->understandingsm = $request->input('understandingsm');
         $data->explainyourlearn = $request->input('explainyourlearn');
-        $data->backexperienceinclass = $request->input('backexperienceinclass');
+        $data->backexpinclass = $request->input('backexpinclass');
         $data->learnfromother = $request->input('learnfromother');
         $data->improvedinfuture = $request->input('improvedinfuture');
         $data->anyothercomment = $request->input('anyothercomment');
-        $data->permission = $request->input('permission');
+        $data->permission = $request->has('permission') ? 1 : 0;
+
         $data->save();
 
-
-
-        // Redirect back with a success message
         return redirect()->route('student.casestudy')->with('success', 'Feedback submitted successfully!');
     }
 

@@ -9,6 +9,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Feedback extends Model
 {
+
+    public $timestamps = false;
+
+    // Your other model code
+
+
+    protected $table = "feedback";
+
     use HasFactory;
 
     protected $fillable = [
@@ -16,18 +24,18 @@ class Feedback extends Model
         'gender',
         'age',
         'experience',
-        'education_year',
-        'sector_experiance',
-        'geo_location',
-        'use_experience_before',
+        'educationYear',
+        'sectorexperiance',
+        'geolocation',
+        'useexperiencebefore',
         'useful',
-        'understanding_strategic_managment',
-        'own_back_exp_understanding_strat_mang',
-        'explain_your_learn',
-        'back_experience_in_class',
-        'learn_from_other',
-        'improved_in_future',
-        'any_other_comment',
+        'understandingstrategicmanagment',
+        'ownbackexpunderstandingstratmang',
+        'explainyourlearn',
+        'backexperienceinclass',
+        'learnfromother',
+        'improvedinfuture',
+        'anyothercomment',
         'permission'
 
     ];

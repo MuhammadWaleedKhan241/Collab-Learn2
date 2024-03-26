@@ -177,7 +177,7 @@ Route::prefix('student')->group(function () {
         Route::get('/all-casestudies', [StudentAllcasestudyController::class, 'show'])->name('student.allcasestudies');
         Route::get('/feedback', [StudentFeedbackController::class, 'show'])->name('student.feedback');
         Route::get('/comment', [StudentMyCaseStudyCommentController::class, 'show'])->name('student.casestudy.comment');
-        Route::post('/store-data', [StudentFeedbackController::class, 'store'])->name('feedback.store');
+        Route::post('/store', [StudentFeedbackController::class, 'store'])->name('feedback.store');
 
         // Route::get('/submitted-case-studies', [StudentMyCaseStudyController::class, 'showSubmittedCaseStudies'])->name('submitted.case.studies');
 

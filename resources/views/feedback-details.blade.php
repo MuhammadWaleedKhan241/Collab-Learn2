@@ -80,7 +80,7 @@
                     </div>
                     <div class=" col-11 col-sm-5 col-md-3 d-flex justify-content-between flex-column ">
                         <p class=" fw-semibold fs-4">Number of years of formal education: </p>
-                        <p class=" pfont">{{ $data->educationYear }}</p>
+                        <p class=" pfont">{{ $data->educatuionYear }}</p>
                     </div>
                     <div class=" col-11 col-sm-5 col-md-3 d-flex justify-content-between flex-column">
                         <p class=" fw-semibold fs-4">Which geographical location are you referring to you in your case
@@ -120,7 +120,7 @@
                     <div class="col-11 d-flex justify-content-between flex-column">
                         <p class="fw-semibold fs-4">Did you like talking about your background experience in the
                             classroom?</p>
-                        <p>{{ $data->backexperienceinclass }}</p>
+                        <p>{{ $data->backexpinclass }}</p>
                     </div>
                     <div class="col-11 d-flex justify-content-between flex-column">
                         <p class="fw-semibold fs-4">Did you learn from other people and their background experiences? Is

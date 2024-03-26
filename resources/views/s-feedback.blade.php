@@ -161,14 +161,14 @@
                                     <label class="form-label d-block fs-4 fw-bolder">Gender:</label>
                                     <div class="form-check-inline">
                                         <input class="form-check-input" type="radio" name="gender" id=""
-                                            value="">
+                                            value="male">
                                         <label class="form-check-label" for="flexRadioDefault1">
                                             Male
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="gender" id=""
-                                            value="">
+                                            value="female">
                                         <label class="form-check-label" for="flexRadioDefault2">
                                             Female
                                         </label>
@@ -178,21 +178,21 @@
                                     <label class="form-label d-block fs-4 fw-bolder">Age:</label>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="age" id="age"
-                                            value="">
+                                            value="21-25">
                                         <label class="form-check-label" for="flexRadioDefault2">
                                             21-25
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="age" id="age"
-                                            value="">
+                                            value="26-30">
                                         <label class="form-check-label" for="flexRadioDefault2">
                                             26-30
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="age" id="age"
-                                            value="">
+                                            value="31-35">
                                         <label class="form-check-label" for="flexRadioDefault2">
                                             31-35
                                         </label>
@@ -216,7 +216,7 @@
                                     <label class="form-label fs-4 fw-bolder">Number of years of professional
                                         Experience:</label>
                                     <input type="number" class="form-control" name="experience" id="experience"
-                                        value="" required>
+                                        value="">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label fs-4 fw-bolder">Number of years of formal
@@ -224,8 +224,8 @@
                                         your current
                                         Master’s
                                         programme):</label>
-                                    <input type="number" class="form-control" name="educationYear"
-                                        id="education_year" value=""required>
+                                    <input type="number" class="form-control" name="educatuionYear"
+                                        id="education_year" value="educationYear">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label fs-4 fw-bolder">Sector of Experiance (in case of more than
@@ -360,8 +360,7 @@
                                     <label class="form-label d-block fs-4 fw-bolder" for="BackExpInClass">Did you like
                                         talking about
                                         your background experience in the classroom?</label>
-                                    <textarea rows="4" type="text" class="form-control" name="backexperienceinclass"
-                                        id="back_experience_in_class"></textarea>
+                                    <textarea rows="4" type="text" class="form-control" name="backexpinclass" id="back_experience_in_class"></textarea>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label d-block fs-4 fw-bolder" for="LearnFromOther">Did you
