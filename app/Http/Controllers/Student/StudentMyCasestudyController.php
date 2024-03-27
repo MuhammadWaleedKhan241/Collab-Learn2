@@ -8,7 +8,7 @@ use App\Models\Casestudy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class StudentMyCasestudyController extends Controller
+class StudentMyCaseStudyController extends Controller
 {
     public function show()
     {

@@ -30,4 +30,9 @@ class ManageTutor extends Model
     //         'file' => 'required|string',
     //         'gender' => 'required|string',
     // ]);
+
+    public function sessions()
+    {
+        return $this->hasMany(AddSession::class, 'session_id', 'id');
+    }
 }

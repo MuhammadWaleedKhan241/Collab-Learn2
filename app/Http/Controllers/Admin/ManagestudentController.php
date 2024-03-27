@@ -10,6 +10,8 @@ class ManagestudentController extends controller
 {
     public function show()
     {
+        $data = ManageStudent::with(['sessions'])->get();
+
         return view('manage-student');
     }
 
@@ -67,6 +69,7 @@ class ManagestudentController extends controller
 
     {
         $data = ManageStudent::all();
+
         return view('manage-student', compact('data'));
     }
 

@@ -10,7 +10,10 @@ class ManagetutorController extends controller
 {
     public function show()
     {
-        $data = ManageTutor::all();
+        // $data = ManageTutor::all();
+
+        $data = ManageTutor::with(['sessions'])->get();
+        // dd($data);
         return view('manage-tutor', ['data' => $data]);
     }
 
@@ -53,12 +56,12 @@ class ManagetutorController extends controller
     }
 
 
-    public function students()
+    // public function students()
 
-    {
-        $data = ManageTutor::all();
-        return view('manage-tutor', compact('data'));
-    }
+    // {
+    //     $data = ManageTutor::all();
+    //     return view('manage-tutor', compact('data'));
+    // }
 
     public function delete($id)
     {
