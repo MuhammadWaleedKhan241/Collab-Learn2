@@ -14,14 +14,11 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->Nullable();
-            $table->unsignedBigInteger('casestudy_id')->nullable();
+            $table->unsignedBigInteger('session_id')->nullable();
             $table->string('comment')->nullable();
-            $table->timestamp('added_on')->nullable();
-
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
-            $table->foreign('casestudy_id')->references('id')->on('case_studies')->onDelete('CASCADE');
-
+            $table->foreign('session_id')->references('id')->on('add_sessions')->onDelete('CASCADE');
+            $table->timestamps();
         });
     }
 

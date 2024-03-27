@@ -148,35 +148,35 @@
                                 <table class="table text-nowrap align-middle mb-0">
                                     <thead>
                                         <tr>
-                                            <th class=" fs-4 fw-bolder">Session</th>
-                                            <th class=" fs-4 fw-bolder">Title</th>
-                                            <th class=" fs-4 fw-bolder">File</th>
-                                            <th class=" fs-4 fw-bolder">By</th>
+                                            <th class="fs-4 fw-bolder">Title</th>
+                                            <th class="fs-4 fw-bolder">Session </th>
+                                            <th class="fs-4 fw-bolder">Attach File</th>
+                                            <th class="fs-4 fw-bolder">Status</th>
+                                            <th class="fs-4 fw-bolder">Action</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-dark ">
-                                        <tr>
-                                            <td class=" text-truncate">
-                                                <p>2023</p>
-                                            </td>
-                                            <td>
-                                                <p class="text-wrap">SEO</p>
-                                            </td>
-                                            <td>
-                                                <a href="#">Download file</a>
-                                            </td>
-                                            <td>
-                                                <p>David</p>
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('student.casestudy.comment') }}"
-                                                    class="btn btn-outline-success"><i
-                                                        class="bi bi-chat-square-dots fs-5"></i> </a>
-                                            </td>
-                                        </tr>
+
+                                        <div class="container">
+                                            @foreach ($data as $record)
+                                                <tr>
+                                                    <td>{{ $record->title }}</td>
+                                                    <td>{{ $record->sessions->sessioncode }}</td>
+                                                    <td>{{ $record->file }}</td>
+                                                    <td>Approved</td>
+                                                    <td>
+                                                        <a href="{{ route('student.casestudy.comment') }}"
+                                                            class="btn btn-outline-success"><i
+                                                                class="bi bi-chat-square-dots fs-5"></i> </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </div>
+
                                     </tbody>
                                 </table>
+
                             </div>
                         </div>
                     </div>

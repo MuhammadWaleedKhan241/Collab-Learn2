@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ManageStudent extends Model
 {
     use HasFactory;
-    protected $table = "manage_students_add";
+    protected $table = "users";
 
     //     $validatedData = $request->validate([
 

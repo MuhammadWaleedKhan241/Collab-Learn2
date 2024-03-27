@@ -75,10 +75,11 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="name">Name</label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            id="name" name="name" value="{{ old('name') }}">
-                                        @error('name')
+                                        <label for="username">Name</label>
+                                        <input type="text"
+                                            class="form-control @error('username') is-invalid @enderror" id="username"
+                                            name="username" value="{{ old('username') }}">
+                                        @error('username')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

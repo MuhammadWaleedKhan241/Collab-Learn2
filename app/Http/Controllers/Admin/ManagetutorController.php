@@ -46,7 +46,7 @@ class ManagetutorController extends controller
         $data->zip = $request->input('zip');
         $data->date_of_birth = $request->input('date_of_birth');
         $data->file = $request->input('file');
-        $data->gender = implode(',', ['gender']);
+        $data->gender = $request->has('gender') ? 'Male' : 'Female';
 
         // $checkbox_data = $request->input('gender');
         // $data->gender = implode($checkbox_data);

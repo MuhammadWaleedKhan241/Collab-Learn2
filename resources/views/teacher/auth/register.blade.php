@@ -100,10 +100,10 @@
                                 <form method="POST" action="{{ route('teacher.submit-register') }}">
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="name">Name</label>
+                                        <label for="username">Name</label>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            id="name" name="name" value="{{ old('name') }}">
-                                        @error('name')
+                                            id="username" name="username" value="{{ old('username') }}">
+                                        @error('username')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

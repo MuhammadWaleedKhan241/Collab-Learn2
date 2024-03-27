@@ -240,26 +240,26 @@
                                         </tr>
                                     </thead>
                                     <tbody class="text-dark ">
-                                        <tr>
-                                            <div class="container">
-                                                @foreach ($data as $records)
-                                        <tr>
-                                            <td>{{ $records->title }}</td>
-                                            <td>{{ $records->sessions->sessioncode }}</td>
-                                            <td>{{ $records->file }}</td>
-                                            <td></td>
-                                        </tr>
-                                        @endforeach
+
+                                        <div class="container">
+                                            @foreach ($data as $records)
+                                                <tr>
+                                                    <td>{{ $records->title }}</td>
+                                                    <td>{{ $records->sessions->sessioncode }}</td>
+                                                    <td>{{ $records->file }}</td>
+                                                    <td>Approved</td>
+                                                </tr>
+                                            @endforeach
+                                        </div>
+
+                                    </tbody>
+                                </table>
                             </div>
-                            </tr>
-                            </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <!--  Customizer -->
