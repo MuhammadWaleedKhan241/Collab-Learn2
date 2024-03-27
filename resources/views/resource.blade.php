@@ -140,51 +140,42 @@
                 <div class="card shadow-none mt-9 mb-0">
                     <div class="table-responsive">
                         <table class="table text-nowrap align-middle mb-0 gap-3">
-
                             <tbody class="text-dark ">
-
-                                @foreach ($data as $record)
-                                    <div class="card mb-3">
-                                        <div class="card-header">
-                                            Session: {{ $session->year }} - {{ $session->sessioncode }}
-                                        </div>
-                                        <div class="card-body">
-                                            <table class="table text-nowrap align-middle mb-0 gap-3">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="fs-4 fw-bolder">File Title</th>
-                                                        <th class="fs-4 fw-bolder">File Name</th>
-                                                        <th class="fs-4 fw-bolder">Added on</th>
-                                                        <th class="fs-4 fw-bolder">Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="text-dark">
-                                                    @foreach ($session->$data as $record)
-                                                        <tr>
-                                                            <td>{{ $resource->file_title }}</td>
-                                                            <td>{{ $resource->file_name }}</td>
-                                                            <td>{{ $resource->created_at }}</td>
-                                                            <td>
-                                                                <div class="d-flex">
-                                                                    <a href="{{ route('admin.edit.resource', ['id' => $resource->id]) }}"
-                                                                        class="btn btn-info me-2">Edit</a>
-                                                                    <form
-                                                                        action="{{ route('admin.delete.resource', ['id' => $resource->id]) }}"
-                                                                        method="post">
-                                                                        @csrf
-                                                                        @method('DELETE')
-                                                                        <button type="submit"
-                                                                            class="btn btn-danger">Delete</button>
-                                                                    </form>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                @endforeach
+                                <table class="table text-nowrap align-middle mb-0 gap-3">
+                                    <thead>
+                                        <tr>
+                                            <th class="fs-4 fw-bolder">File Title</th>
+                                            <th class="fs-4 fw-bolder">File Name</th>
+                                            <th class="fs-4 fw-bolder">Added on</th>
+                                            <th class="fs-4 fw-bolder">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-dark">
+                                        @foreach ($data as $resource)
+                                            <tr>
+                                                <td>{{ $resource->file_title }}</td>
+                                                <td>{{ $resource->file_name }}</td>
+                                                <td>{{ $resource->created_at }}</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <a href="{{ route('admin.edit.resource', ['id' => $resource->id]) }}"
+                                                            class="btn btn-outline-success me-2">Edit</a>
+                                                        {{-- <form
+                                                            action="{{ route('admin.delete.resource', ['id' => $resource->id]) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                class="btn btn-danger">Delete</button>
+                                                        </form> --}}
+                                                        <a href="{{ route('admin.delete.resource', ['id' => $resource->id]) }}"
+                                                            class="btn btn-outline-danger me-2">Delete</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </tbody>
                         </table>
                     </div>
@@ -192,6 +183,7 @@
             </div>
         </div>
     </div>
+
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -207,16 +199,16 @@
                             <div class="alert alert-danger">{{ $error }}</div>
                         @endforeach
                     @endif
-                    <form action="{{ route('add_resources.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('add.resources.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="session_id" value="">
+                        <input type="hidden" name="session_id" value="{{ $session_id }}">
                         <div class="mb-3">
-                            <label for="file_title" class="form-label fs-4">File Title</label>
-                            <input type="text" class="form-control" name="file_title" id="file_title">
+                            <label for="title" class="form-label fs-4">File Title</label>
+                            <input type="text" class="form-control" name="title" id="title">
                         </div>
                         <div class="mb-3">
-                            <label for="formFile" class="form-label fs-4">Add File</label>
-                            <input class="form-control" type="file" name="file_name" id="formFile">
+                            <label for="File" class="form-label fs-4">Add File</label>
+                            <input class="form-control" type="file" name="file" id="File">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

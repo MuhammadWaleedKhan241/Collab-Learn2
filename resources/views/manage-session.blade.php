@@ -26,10 +26,12 @@
                                     <tr>
                                         <td>{{ $record->year }}</td>
                                         <td>{{ $record->sessioncode }}</td>
-                                        <td><a href="{{ isset($session) ? route('add_resources.store', ['session_Id' => $session->id]) : '#' }}"
-                                                type="button" class="btn btn-outline-secondary ">Resources</a></td>
+                                        {{-- <td><a href="{{ isset($session) ? route('add_resources.store', ['session_Id' => $session->id]) : '#' }}"
+                                                type="button" class="btn btn-outline-secondary ">Resources</a></td> --}}
                                         {{-- <td><a href="{{ route('add_resources.store', ['session_Id' => $session->id]) }}"
                                                 type="button" class="btn btn-outline-secondary ">Resources</a></td> --}}
+                                        <td><a href="{{ route('admin.resource', $record->id) }}" type="button"
+                                                class="btn btn-outline-secondary ">Resources</a></td>
 
                                     </tr>
                                 @endforeach

@@ -79,13 +79,13 @@ Route::prefix('admin')->group(function () {
         Route::get('add-session', [AddSessionController::class, 'show'])->name('admin.add-session');
         Route::post('store', [AddSessionController::class, 'store'])->name('admin.session-store');
 
-        Route::get('add-resource/{session_Id}', [ResourceController::class, 'show'])->name('admin.resource');
+        Route::get('add-resource/{id}', [ResourceController::class, 'show'])->name('admin.resource');
         // Route::get('/add-resources', [AddResourcesController::class, ''])->name('add_resources.create');
-        Route::post('/add-resources', [AddResourcesController::class, 'store'])->name('add_resources.store');
+        Route::post('/add-resources', [AddResourcesController::class, 'store'])->name('add.resources.store');
         // Route for editing a resource
-        Route::get('/admin/resource/{id}/edit', [ResourceController::class, 'edit'])->name('admin.edit.resource');
+        Route::get('/admin/resource/edit/{id}', [ResourceController::class, 'edit'])->name('admin.edit.resource');
         // Route for deleting a resource
-        Route::delete('/admin/resource/{id}', [ResourceController::class, 'destroy'])->name('admin.delete.resource');
+        Route::get('/admin/resource/delete/{id}', [ResourceController::class, 'delete'])->name('admin.delete.resource');
         Route::put('/admin/resource/{id}', [ResourceController::class, 'update'])->name('admin.update.resource');
 
         Route::get('managestudent', [ManagestudentController::class, 'show'])->name('admin.managestudent');
