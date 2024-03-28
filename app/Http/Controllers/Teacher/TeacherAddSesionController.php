@@ -11,19 +11,20 @@ class TeacherAddSesionController extends Controller
 {
     public function show()
     {
-        return view('tadd-session');
+        $session_code = str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT);
+        return view('tadd-session', compact('session_code'));
     }
 
     function store(Request $request)
     {
 
         $request->validate([
-            'sessioncode' => ['required', 'integer', 'digits:6'],
-            'attribute1' => 'required',
-            'attribute2' => 'required',
-            'attribute3' => 'required',
-            'attribute4' => 'required',
-            'attribute5' => 'required',
+            'sessioncode' => ['required', 'integer', 'digits:6', 'unique:add_sessions,sessioncode'],
+            'attribute1' => 'nullable',
+            'attribute2' => 'nullable',
+            'attribute3' => 'nullable',
+            'attribute4' => 'nullable',
+            'attribute5' => 'nullable',
         ]);
 
 

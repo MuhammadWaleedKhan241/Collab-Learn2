@@ -105,7 +105,9 @@ Route::prefix('admin')->group(function () {
         Route::get('feedback', [FeedbackController::class, 'show'])->name('admin.feedback');
         Route::get('feedback-details/{id}', [FeedbackDetailController::class, 'show'])->name('feedback-detail');
         Route::get('feedback-details/{id}', [FeedbackDetailController::class, 'show'])->name('admin.feedback-detail');
-        Route::get('comments', [CommentController::class, 'show'])->name('admin.comment');
+
+        Route::get('/comments/{id}', [CommentController::class, 'show'])->name('admin.comments');
+        Route::post('/comment', [CommentController::class, 'store'])->name('admin.casestudy.comment-submit');
     });
 });
 
@@ -129,11 +131,12 @@ Route::prefix('teacher')->group(function () {
     Route::middleware('auth:teacher')->group(function () {
         Route::get('/dashboard', [TeacherDashboardController::class, 'show'])->name('teacher.dashboard');
         Route::get('/casestudies', [TeacherAllCaseStudyController::class, 'show'])->name('teacher.casestudy');
+        Route::get('/session-casestudies/{id}', [TeacherAllCaseStudyController::class, 'sessionCaseStudy'])->name('teacher.session.casestudy');
         Route::get('/sessions', [TeacherSessionController::class, 'show'])->name('teacher.session');
         Route::get('/createsession', [TeacherAddSesionController::class, 'show'])->name('teacher.addsession');
         Route::post('/submit', [TeacherAddSesionController::class, 'store'])->name('teacher.session-store');
 
-        Route::get('/viewResources', [TeacherResourceController::class, 'show'])->name('teacher.viewResources');
+        Route::get('/view_resources/{id}', [TeacherResourceController::class, 'show'])->name('teacher.view_resources');
 
         Route::post('/add-resources', [TeacherResourceController::class, 'store'])->name('add_resources');
 
@@ -144,7 +147,8 @@ Route::prefix('teacher')->group(function () {
         Route::put('/teacher/resource/{id}', [TeacherResourceController::class, 'update'])->name('teacher.update.resource');
 
 
-        Route::get('/readComments', [TeacherCommentController::class, 'show'])->name('teacher.comments');
+        Route::get('/comments/{id}', [TeacherCommentController::class, 'show'])->name('teacher.comments');
+        Route::post('/comment', [TeacherCommentController::class, 'store'])->name('teacher.casestudy.comment-submit');
         // Route::post('/form-submit', [TeacherResourceController::class, 'store'])->name('form.submit');
 
 
@@ -175,7 +179,7 @@ Route::prefix('student')->group(function () {
         Route::post('/submit', [StudentMyCaseStudyController::class, 'store'])->name('student.submit.casestudy');
         Route::get('/all-casestudies', [StudentAllcasestudyController::class, 'show'])->name('student.allcasestudies');
         Route::get('/feedback', [StudentFeedbackController::class, 'show'])->name('student.feedback');
-        Route::get('/comment', [StudentMyCaseStudyCommentController::class, 'show'])->name('student.casestudy.comment');
+        Route::get('/comment/{id}', [StudentMyCaseStudyCommentController::class, 'show'])->name('student.casestudy.comment');
         Route::post('/comment', [StudentMyCaseStudyCommentController::class, 'store'])->name('student.casestudy.comment-submit');
         Route::post('/store', [StudentFeedbackController::class, 'store'])->name('feedback.store');
 

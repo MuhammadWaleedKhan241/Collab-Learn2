@@ -97,10 +97,10 @@
                 </div>
                 <div class="card rounded-2 overflow-hidden">
                     <div class="card-body p-4">
-                        <h2 class="fs-7 fw-semibold my-4">Streaming video way before it was cool, go dark tomorrow</h2>
+                        <h2 class="fs-7 fw-semibold my-4">{{ $casestudy->title }}</h2>
                         <div class="d-flex align-items-center gap-4">
                             {{-- <div class="d-flex align-items-center gap-2"><i class="ti ti-eye text-dark fs-5"></i>2252</div>
-              <div class="d-flex align-items-center gap-2"><i class="ti ti-message-2 text-dark fs-5"></i>2</div> --}}
+                         <div class="d-flex align-items-center gap-2"><i class="ti ti-message-2 text-dark fs-5"></i>2</div> --}}
                         </div>
                         <div class="d-flex align-items-center gap-3 mb-4 mt-7 pt-8">
                             <h4 class="mb-0 fw-bolder">Comments</h4>
@@ -113,7 +113,13 @@
                                     <div class="d-flex align-items-center gap-3">
                                         <img src={{ asset('images/profile/user-2.jpg') }} alt=""
                                             class="rounded-circle" width="33" height="33">
-                                        <h6 class="fw-semibold mb-0 fs-4">{{ $comment->user?->username }}</h6>
+                                        @if ($comment->is_teacher == 1)
+                                            <h6 class="fw-semibold mb-0 fs-4">{{ $comment->teacher?->username }}</h6>
+                                        @elseif($comment->is_admin == 1)
+                                            <h6 class="fw-semibold mb-0 fs-4">{{ $comment->admin?->email }}</h6>
+                                        @else
+                                            <h6 class="fw-semibold mb-0 fs-4">{{ $comment->user?->username }}</h6>
+                                        @endif
                                         <div class="d-flex align-items-center fs-2 ms-auto"><i
                                                 class="ti ti-point text-dark"></i>Sat, Jan 14
                                         </div>
@@ -127,7 +133,7 @@
                         <h4 class="mb-4 fw-semibold">Post Comment</h4>
                         <form action="{{ route('student.casestudy.comment-submit') }}" method="POST">
                             @csrf
-
+                            <input type="hidden" value="{{ $casestudy->id }}" name="casestudy_id" id="">
                             <div>
                                 <textarea class="form-control mb-4" rows="5" name="comment"></textarea>
                                 <button type="submit" class="btn btn-outline-success">Post Comment</button>

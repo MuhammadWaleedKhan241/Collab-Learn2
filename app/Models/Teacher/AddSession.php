@@ -21,6 +21,6 @@ class AddSession extends Model
 
     public function caseStudies()
     {
-        return $this->hasMany(CaseStudy::class);
+        return $this->hasMany(CaseStudy::class, 'session_id');
     }
 }

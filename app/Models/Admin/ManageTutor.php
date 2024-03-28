@@ -33,6 +33,6 @@ class ManageTutor extends Model
 
     public function sessions()
     {
-        return $this->hasMany(AddSession::class, 'session_id', 'id');
+        return $this->hasMany(AddSession::class, 'id');
     }
 }

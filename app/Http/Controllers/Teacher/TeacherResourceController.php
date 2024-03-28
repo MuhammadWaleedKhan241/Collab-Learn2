@@ -3,14 +3,25 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\Image;
+use App\Models\Teacher\AddSession;
+use App\Models\Teacher\Resource;
 use Illuminate\Http\Request;
 
 class TeacherResourceController  extends Controller
 {
-    public function show()
+    public function show($id)
     {
-        return view('tresources');
+        $resources = Resource::query()->where('session_id', $id)->get();
+        if (null == $resources) {
+            abort(404);
+        }
+        $session = AddSession::query()->where('id', $id)->first();
+        if (null == $session) {
+            abort(404);
+        }
+
+        return view('tresources', compact('resources', 'session'));
     }
 
 
@@ -18,26 +29,21 @@ class TeacherResourceController  extends Controller
     {
         // Validate the incoming request data
         $validatedData = $request->validate([
-            'file_title' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
             'file' => 'required|file|mimes:pdf,doc,docx|max:10240', // Example validation for file uploads
         ]);
+        $data = new Resource();
+        $data->title = $request->title;
+        $data->session_id = $request->session_id;
+        if ($request->hasFile('file')) {
+            $path = Image::image_upload($request->file, 'resources');
+        } else {
+            $path = null;
+        }
+        $data->file = $path;
 
-        // Process the file upload and other data insertion logic
-        // Make sure to handle file uploads appropriately
+        $data->save();
 
-        // Example: store the uploaded file
-        $file = $request->file('file');
-        $path = $file->store('files');
-
-        // Create a new record in the database using the validated data
-        $data::create([
-            'File_Title' => $validatedData['file_title'],
-            'File_Name' => $file->getClientOriginalName(),
-            'Path' => $path,
-            'Added_On' => now(), // Example for current timestamp
-        ]);
-
-        // Redirect back or to a success page after successful data insertion
         return redirect()->back()->with('success', 'Data has been successfully inserted!');
     }
 }

@@ -16,11 +16,11 @@ return new class extends Migration
             $table->string('teacher_id')->nullable();
             $table->year('year')->default(date('Y'));
             $table->integer('sessioncode');
-            $table->string('attribute1');
-            $table->string('attribute2');
-            $table->string('attribute3');
-            $table->string('attribute4');
-            $table->string('attribute5');
+            $table->string('attribute1')->nullable();
+            $table->string('attribute2')->nullable();
+            $table->string('attribute3')->nullable();
+            $table->string('attribute4')->nullable();
+            $table->string('attribute5')->nullable();
             // $table->boolean('country_field')->default(false);
             $table->timestamps();
         });

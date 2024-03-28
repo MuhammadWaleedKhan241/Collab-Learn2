@@ -131,7 +131,7 @@
                             <!-- <a class="navbar-brand" href="#">Student</a> -->
                             <a href="{{ route('teacher.session') }}" class="btn btn-outline-success round-10"><i
                                     class="bi bi-arrow-left fs-5">
-                                </i><b>2023: 1234</b></a>
+                                </i><b></b></a>
                             <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 Add Resource
@@ -140,57 +140,45 @@
                     </nav>
                 </div>
                 <div class="card shadow-none mt-9 mb-0">
-                    <div class="table-responsive">
+                    <div class="card-header">
+                        Session: {{ $session->year }} -
+                        {{ $session->sessioncode }}
+                    </div>
+                    <div class="card-body">
                         <table class="table text-nowrap align-middle mb-0 gap-3">
-
-                            <tbody class="text-dark ">
-
-                                @foreach ($data as $record)
-                                    <div class="card mb-3">
-                                        <div class="card-header">
-                                            Session: {{ $resource->session->year }} -
-                                            {{ $resource->session->sessioncode }}
-                                        </div>
-                                        <div class="card-body">
-                                            <table class="table text-nowrap align-middle mb-0 gap-3">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="fs-4 fw-bolder">File Title</th>
-                                                        <th class="fs-4 fw-bolder">File Name</th>
-                                                        <th class="fs-4 fw-bolder">Added on</th>
-                                                        <th class="fs-4 fw-bolder">Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="text-dark">
-                                                    <tr>
-                                                        <td>{{ $record->file_title }}</td>
-                                                        <td>{{ $record->file_name }}</td>
-                                                        <td>{{ $record->created_at }}</td>
-                                                        <td>
-                                                            <div class="d-flex">
-                                                                <a href="{{ route('teacher.edit.resource', ['id' => $resource->id]) }}"
-                                                                    class="btn btn-info me-2">Edit</a>
-                                                                <form
-                                                                    action="{{ route('teacher.delete.resource', ['id' => $resource->id]) }}"
-                                                                    method="post">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit"
-                                                                        class="btn btn-danger">Delete</button>
-                                                                </form>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+                            <thead>
+                                <tr>
+                                    <th class="fs-4 fw-bolder">Title</th>
+                                    <th class="fs-4 fw-bolder">Name</th>
+                                    <th class="fs-4 fw-bolder">Added on</th>
+                                    <th class="fs-4 fw-bolder">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-dark">
+                                @foreach ($resources as $record)
+                                    <tr>
+                                        <td>{{ $record->title }}</td>
+                                        <td>{{ $record->file }}</td>
+                                        <td>{{ $record->created_at }}</td>
+                                        <td>
+                                            <div class="d-flex">
+                                                <a href="{{ route('teacher.edit.resource', ['id' => $record->id]) }}"
+                                                    class="btn btn-info me-2">Edit</a>
+                                                <form
+                                                    action="{{ route('teacher.delete.resource', ['id' => $record->id]) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 @endforeach
-
-
                             </tbody>
                         </table>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -205,12 +193,13 @@
                             aria-label="Close"></button>
                     </div>
                     <div class="modal-body ">
-                        <form method="POST" action="{{ route('form.submit') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('add_resources') }}" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" value="{{ $session->id }}" name="session_id">
                             <div class="row">
                                 <div class="mb-3">
                                     <label for="fileTitle" class="form-label fs-4">File Title</label>
-                                    <input type="text" class="form-control" id="fileTitle" name="file_title"
+                                    <input type="text" class="form-control" id="fileTitle" name="title"
                                         required>
                                 </div>
                                 <div class="mb-3">
@@ -220,7 +209,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-success"
+                                <button type="submit" class="btn btn-outline-success"
                                     data-bs-dismiss="modal">Add</button>
                                 <button type="button" class="btn btn-outline-danger"
                                     data-bs-dismiss="modal">Cancel</button>

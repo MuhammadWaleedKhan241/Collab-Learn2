@@ -18,8 +18,11 @@
     <!-- Core Css -->
     <link id="themeColors" rel="stylesheet" href={{ asset('css/style.min.css') }} />
     <link href={{ asset('https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css') }} rel="stylesheet">
+
     <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jqvmap.min.css') }}">
+
     <link href={{ asset('//cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css') }} />
+
     <link rel="stylesheet" href={{ asset('https://unpkg.com/leaflet/dist/leaflet.css') }} />
     <link rel="stylesheet" href={{ asset('css/style.min.css') }}>
 </head>
@@ -109,7 +112,7 @@
                                     <tbody>
                                         @foreach ($data as $record)
                                             <tr>
-                                                <td>{{ $record->user->name }}</td>
+                                                <td>{{ $record->user->username }}</td>
                                                 <td>{{ $record->gender }}</td>
                                                 <td>{{ $record->age }}</td>
                                                 <td>{{ $record->experience }}</td>
@@ -137,6 +140,12 @@
         </div>
         <!-- Customizer -->
         <!-- Import Js Files -->
+        <script src={{ asset('https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js') }}
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+        </script>
+        <script src={{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js') }}
+            integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
+        </script>
         <script src={{ asset('libs/jquery/dist/jquery.min.js') }}></script>
         <script src={{ asset('libs/simplebar/dist/simplebar.min.js') }}></script>
         <script src={{ asset('libs/bootstrap/ist/js/bootstrap.bundle.min.js') }}></script>

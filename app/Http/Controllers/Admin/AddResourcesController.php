@@ -24,14 +24,14 @@ class AddResourcesController extends Controller
         ]);
 
         $resource = new Resources();
-        $resource->file_title = $request->input('title');
+        $resource->title = $request->input('title');
         $resource->session_id = $request->input('session_id');
         if ($request->hasFile('file')) {
             $path = Image::image_upload($request->file, 'resourses');
         } else {
             $path = null;
         }
-        $resource->file_name = $path;
+        $resource->file = $path;
         $resource->save();
 
         return redirect()->route('admin.resource', $request->input('session_id'))->with('success', 'Resource added successfully!');

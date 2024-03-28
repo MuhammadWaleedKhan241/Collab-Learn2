@@ -153,8 +153,8 @@
                                     <tbody class="text-dark">
                                         @foreach ($data as $resource)
                                             <tr>
-                                                <td>{{ $resource->file_title }}</td>
-                                                <td>{{ $resource->file_name }}</td>
+                                                <td>{{ $resource->title }}</td>
+                                                <td>{{ $resource->file }}</td>
                                                 <td>{{ $resource->created_at }}</td>
                                                 <td>
                                                     <div class="d-flex">

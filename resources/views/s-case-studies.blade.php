@@ -23,11 +23,6 @@
 
     <!-- Core Css -->
     <link id="themeColors" rel="stylesheet" href="{{ asset('css/style.min.css') }}" />
-    {{-- <script src="{{asset('https://cdn.tailwindcss.com')}}"></script> --}}
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> --}}
-
-
-
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon.ico') }}" />
     <!-- Core Css -->
     <link id="themeColors" rel="stylesheet" href={{ asset('css/style.min.css') }} />
@@ -93,8 +88,7 @@
             </div>
             <!-- End Sidebar scroll-->
         </aside>
-        <!--  Sidebar End -->
-        <!--  Main wrapper -->
+
         <div class="body-wrapper">
             <!--  Header Start -->
             <header class="app-header">
@@ -161,7 +155,7 @@
                 <p class=" position-absolute mt-2 fs-6 fw-bolder "> My Case Studies</p>
                 <button type="button" class="btn btn-outline-success position-absolute end-0 me-2 "
                     data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Upload Case Studies
+                    Add New Case Study
                 </button>
                 <div class="card">
                     <div class="d-flex justify-content-end">
@@ -180,37 +174,66 @@
                                             <div class="mb-4">
                                                 <h2 class="fs-4 fw font-semibold">Submit Case study</h2>
                                             </div>
-                                            <form action="{{ route('student.submit.casestudy') }}" method="POST">
+                                            <form action="{{ route('student.submit.casestudy') }}" method="POST"
+                                                enctype="multipart/form-data">
                                                 @csrf
                                                 <input type="hidden" name="session_id" value="{{ $sessions->id }}">
-                                                <div class="col-6 mb-3 form-floating-input">
+                                                <div class="col-12 mb-3 form-floating-input">
                                                     <input type="text" class="form-control" name="title"
                                                         placeholder="Title">
                                                 </div>
-                                                <div class="col-6 mb-3">
-                                                    <input type="text" class="form-control" name=""
-                                                        placeholder="" value="{{ $sessions->attribute1 }}" disabled>
+
+                                                <div class="row">
+                                                    <div class="col-6 mb-3">
+
+                                                        <label type="text" value="{{ $sessions->attribute1 }}"
+                                                            disabled>Country</label>
+                                                        <select class="form-select" name="country"
+                                                            aria-label="Default select example">
+                                                            <option selected>Select Country</option>
+                                                            <option value="pakistan">Pakistan</option>
+                                                            <option value="afganistan">Afganistan</option>
+                                                            <option value="india">India</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-6 mb-3">
+
+                                                        <label type="text">{{ $sessions->attribute1 }}</label>
+                                                        <input type="text" value="" name="attribute1"
+                                                            class="form-control" placeholder="sector">
+                                                    </div>
                                                 </div>
-                                                <div class="col-6 mb-3">
-                                                    <input type="text" class="form-control" name=""
-                                                        placeholder="Country" value="{{ $sessions->attribute2 }}"
-                                                        disabled>
+                                                <div class="row">
+                                                    <div class="col-6 mb-3">
+                                                        <label type="text">{{ $sessions->attribute2 }}</label>
+                                                        <input type="text" class="form-control" value=""
+                                                            name="attribute2" placeholder="sector">
+                                                    </div>
+                                                    <div class="col-6 mb-3">
+                                                        <label type="text">{{ $sessions->attribute3 }}</label>
+                                                        <input type="text" class="form-control" value=""
+                                                            name="attribute3" placeholder="sector">
+                                                    </div>
                                                 </div>
-                                                <div class="col-6 mb-3">
-                                                    <input type="text" class="form-control" name=""
-                                                        placeholder="Models and frameworks"
-                                                        value="{{ $sessions->attribute3 }}" disabled>
-                                                </div>
-                                                <div class="col-6 mb-3">
-                                                    <input type="text" class="form-control" name=""
-                                                        placeholder="Models and frameworks"
-                                                        value="{{ $sessions->attribute4 }}" disabled>
-                                                </div>
-                                                <div class="col-6 mb-3">
-                                                    <div class="mb-3">
-                                                        <label for="formFile" class="form-label">Attach file</label>
-                                                        <input class="form-control" type="file" name="file"
-                                                            id="formFile">
+                                                <div class="row">
+                                                    <div class="col-6 mb-3">
+                                                        <label type="text">{{ $sessions->attribute4 }}</label>
+                                                        <input type="text" class="form-control" value=""
+                                                            name="attribute4" placeholder="sector">
+                                                    </div>
+                                                    <div class="col-6 mb-3">
+                                                        <label type="text">{{ $sessions->attribute5 }}</label>
+                                                        <input type="text" class="form-control" value=""
+                                                            name="attribute5" placeholder="sector">
+                                                    </div>
+                                                    <div class="col-6 mb-3">
+                                                        <div class="mb-3">
+                                                            <label for="formFile" class="form-label">Attach
+                                                                file</label>
+                                                            <input class="form-control" type="file" name="file"
+                                                                id="formFile">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -245,7 +268,7 @@
                                             @foreach ($data as $records)
                                                 <tr>
                                                     <td>{{ $records->title }}</td>
-                                                    <td>{{ $records->sessions->sessioncode }}</td>
+                                                    <td>{{ $records->session->sessioncode }}</td>
                                                     <td>{{ $records->file }}</td>
                                                     <td>Approved</td>
                                                 </tr>

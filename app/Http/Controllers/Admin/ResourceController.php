@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Resources;
+use App\Models\Image;
 use App\Models\Teacher\Resource;
 use Illuminate\Http\Request;
 
@@ -29,15 +30,24 @@ class ResourceController extends controller
     public function update(Request $request, $id)
     {
 
-        $data =  Resources::find($id);
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'file' => 'required|file|max:2048',
+        ]);
 
-        $data->file_title = $request->input('file_title');
 
-        $data->file_name = $request->input('file_name');
+        $resource =  Resources::find($id);
+        $resource->title = $request->input('title');
+        $resource->session_id = $request->input('session_id');
+        if ($request->hasFile('file')) {
+            $path = Image::image_upload($request->file, 'resourses');
+        } else {
+            $path = null;
+        }
+        $resource->file = $path;
+        $resource->save();
 
-
-        $data->save();
-        return redirect()->route('admin.resource')->with('success', 'Session Addeed Successfully!');
+        return redirect()->route('admin.resource', $request->input('session_id'))->with('success', 'Session Addeed Successfully!');
     }
 
     public function delete($id)

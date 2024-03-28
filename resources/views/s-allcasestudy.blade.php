@@ -22,8 +22,32 @@
         integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
 
     <!-- Core Css -->
+    <link rel="stylesheet" href="{{ asset('libs/owl.carousel/dist/assets/owl.carousel.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css') }}"
+        integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+
+    <!-- Core Css -->
     <link id="themeColors" rel="stylesheet" href="{{ asset('css/style.min.css') }}" />
-    <script src="{{ asset('https://cdn.tailwindcss.com') }}"></script>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon.ico') }}" />
+    <!-- Core Css -->
+    <link id="themeColors" rel="stylesheet" href={{ asset('css/style.min.css') }} />
+    <link href={{ asset('https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css') }} rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jqvmap.min.css') }}">
+
+    <link href={{ asset('//cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css') }} />
+
+    <link rel="stylesheet" href={{ asset('https://unpkg.com/leaflet/dist/leaflet.css') }} />
+    <link rel="stylesheet" href={{ asset('css/style.min.css') }}>
+
+
+
+
+
+
+
+
 </head>
 
 <body>
@@ -84,6 +108,7 @@
         <div class="body-wrapper">
             <!--  Header Start -->
             <header class="app-header">
+
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <ul class="navbar-nav">
                         <li class="nav-item">
@@ -93,6 +118,13 @@
                             </a>
                         </li>
                     </ul>
+                    <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="p-2">
+                            <i class="ti ti-dots fs-7"></i>
+                        </span>
+                    </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                         <div class="d-flex align-items-center justify-content-between">
                             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
@@ -101,8 +133,9 @@
                                         aria-expanded="false">
                                         <div class="d-flex align-items-center">
                                             <div class="user-profile-img">
-                                                <img src={{ asset('images/profile/user-1.jpg') }} class="rounded-circle"
-                                                    width="35" height="35" alt="">
+                                                <img src={{ asset('images/profile/user-1.jpg') }}
+                                                    class="rounded-circle" width="35" height="35"
+                                                    alt="">
                                             </div>
                                         </div>
                                     </a>
@@ -148,10 +181,10 @@
                                 <table class="table text-nowrap align-middle mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="fs-4 fw-bolder">Title</th>
-                                            <th class="fs-4 fw-bolder">Session </th>
-                                            <th class="fs-4 fw-bolder">Attach File</th>
-                                            <th class="fs-4 fw-bolder">Status</th>
+                                            <th class="fs-4 fw-bolder">Session</th>
+                                            <th class="fs-4 fw-bolder">Title </th>
+                                            <th class="fs-4 fw-bolder">File</th>
+                                            <th class="fs-4 fw-bolder">By</th>
                                             <th class="fs-4 fw-bolder">Action</th>
                                             <th></th>
                                         </tr>
@@ -161,12 +194,13 @@
                                         <div class="container">
                                             @foreach ($data as $record)
                                                 <tr>
+                                                    <td>{{ $record->session?->sessioncode }}</td>
                                                     <td>{{ $record->title }}</td>
-                                                    <td>{{ $record->sessions->sessioncode }}</td>
                                                     <td>{{ $record->file }}</td>
-                                                    <td>Approved</td>
+                                                    <td>{{ $record->user->username }}</td>
+
                                                     <td>
-                                                        <a href="{{ route('student.casestudy.comment') }}"
+                                                        <a href="{{ route('student.casestudy.comment', $record->id) }}"
                                                             class="btn btn-outline-success"><i
                                                                 class="bi bi-chat-square-dots fs-5"></i> </a>
                                                     </td>
@@ -199,6 +233,7 @@
     <script src="{{ asset('libs/owl.carousel/dist/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('js/dashboard.js') }}"></script>
+
 </body>
 
 </html>

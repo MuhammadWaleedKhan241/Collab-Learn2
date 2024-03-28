@@ -105,19 +105,21 @@
                     @endforeach
                 @endif
                 <form action="{{ route('admin.update.resource', $data->id) }}" method="POST"
-                    class="row g-3 needs-validation" novalidate>
+                    class="row g-3 needs-validation" novalidate enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
+                    <input type="hidden" name="session_id" value="{{ $data->session_id }}">
                     <div class="d-flex">
                         <div class="col-md-6 me-2  ">
                             <label for="validationTooltip01" class="form-label">File
                                 title</label>
-                            <input type="text" class="form-control" id="validationTooltip01" name="file_title"
-                                value="{{ $data->file_title }}">
+                            <input type="text" class="form-control" id="validationTooltip01" name="title"
+                                value="{{ $data->title }}">
                         </div>
                         <div class="col-md-6 position-relative">
                             <label for="validationTooltip02" class="form-label">File Name</label>
-                            <input type="file" class="form-control" id="validationTooltip02" name="file_name"
-                                value="{{ $data->file_name }}">
+                            <input type="file" class="form-control" id="validationTooltip02" name="file"
+                                value="{{ $data->name }}">
                         </div>
                     </div>
 
