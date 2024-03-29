@@ -33,9 +33,8 @@
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
 
-        <aside class="left-sidebar">
 
-        </aside>
+        @include('navlayout')
         <div class="body-wrapper">
             <!-- Header Start -->
             <header class="app-header">

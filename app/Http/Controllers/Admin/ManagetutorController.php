@@ -56,13 +56,6 @@ class ManagetutorController extends controller
     }
 
 
-    // public function students()
-
-    // {
-    //     $data = ManageTutor::all();
-    //     return view('manage-tutor', compact('data'));
-    // }
-
     public function delete($id)
     {
 
@@ -98,13 +91,9 @@ class ManagetutorController extends controller
         $data->zip = $request->input('zip');
         $data->date_of_birth = $request->input('date_of_birth');
         $data->file = $request->input('file');
-
-        $data->gender = implode(',', ['gender']);
-
-        // $checkbox_data = $request->input('gender');
-        // $data->gender = implode($checkbox_data);
-
-
+        $data->gender = $request->input('gender');
+        //$data->gender = implode(',', ['gender']);
+        //dd($data);
         $data->save();
         return redirect()->route('admin.managetutor')->with('success', 'Session Addeed Successfully!');
     }

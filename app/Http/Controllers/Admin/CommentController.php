@@ -19,17 +19,15 @@ class CommentController extends controller
         if (null == $casestudy) {
             abort(404);
         }
-
         return view('comments', compact('comments', 'casestudy'));
     }
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'comment' => 'required|string',
 
         ]);
-        // dd($request->all());
-
         $data = new Comment();
         $data->casestudy_id = $request->casestudy_id;
         $data->session_id = $request->session_id;

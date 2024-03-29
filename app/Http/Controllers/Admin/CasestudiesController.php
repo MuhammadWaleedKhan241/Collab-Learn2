@@ -10,7 +10,6 @@ class CasestudiesController extends controller
 {
     public function show()
     {
-
         $casestudies = AddSession::with(['casestudies'])->get();
         return view('case-studies', compact('casestudies'));
     }

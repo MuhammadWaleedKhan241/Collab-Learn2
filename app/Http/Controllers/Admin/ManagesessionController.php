@@ -8,14 +8,9 @@ use Illuminate\Http\Request;
 
 class ManagesessionController extends controller
 {
-
-
-
-
     public function show()
     {
         $data = AddSession::all();
         return view('manage-session', compact('data'));
-        //return view('manage-session', ['sessions' => $sessions]);
     }
 }

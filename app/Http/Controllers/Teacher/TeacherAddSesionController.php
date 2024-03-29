@@ -9,15 +9,16 @@ use Illuminate\Support\Facades\Auth;
 
 class TeacherAddSesionController extends Controller
 {
+
     public function show()
     {
         $session_code = str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT);
+        //dd($session_code);
         return view('tadd-session', compact('session_code'));
     }
 
     function store(Request $request)
     {
-
         $request->validate([
             'sessioncode' => ['required', 'integer', 'digits:6', 'unique:add_sessions,sessioncode'],
             'attribute1' => 'nullable',

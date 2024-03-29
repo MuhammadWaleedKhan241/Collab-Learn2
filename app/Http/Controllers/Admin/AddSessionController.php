@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 class AddSessionController extends controller
 {
     public function show()
+
     {
+        $sessioncode = str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT);
         return view('add-session');
     }
 
@@ -18,7 +20,7 @@ class AddSessionController extends controller
 
         $request->validate([
             //'year' => 'required',
-            'sessioncode' => ['required', 'integer', 'digits:6'],
+            'sessioncode' => ['required', 'integer', 'digits:6', 'unique:add_sessions,sessioncode'],
             'attribute1' => 'required',
             'attribute2' => 'required',
             'attribute3' => 'required',

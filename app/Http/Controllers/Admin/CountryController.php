@@ -271,7 +271,6 @@ class CountryController extends Controller
             ["name" => "Australia", "code" => "AU"],
             ["name" => "Austria", "code" => "AT"],
             ["name" => "Azerbaijan", "code" => "AZ"],
-
             ["name" => "Viet Nam", "code" => "VN"],
             ["name" => "Virgin Islands, British", "code" => "VG"],
             ["name" => "Virgin Islands, U.S.", "code" => "VI"],

@@ -17,27 +17,27 @@
                     <h1 class="fs-7 fw-bold">Add New Session</h1>
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-bolder">Session Code </label>
-                        <input type="number" class="form-control" name="sessioncode" id="Sector_Experirnce">
+                        <input type="number" class="form-control" name="sessioncode" id="sessioncode">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-bolder">Attribute 1</label>
-                        <input type="text" class="form-control" name="attribute1" id="Sector_Experirnce">
+                        <input type="text" class="form-control" name="attribute1" id="attribute1">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-bolder">Attribute 2 </label>
-                        <input type="text" class="form-control" name="attribute2" id="Sector_Experirnce">
+                        <input type="text" class="form-control" name="attribute2" id="attribute2">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-bolder">Attribute 3 </label>
-                        <input type="text" class="form-control" name="attribute3" id="Sector_Experirnce">
+                        <input type="text" class="form-control" name="attribute3" id="attribute3">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-bolder">Attribute 4 </label>
-                        <input type="text" class="form-control" name="attribute4" id="Sector_Experirnce">
+                        <input type="text" class="form-control" name="attribute4" id="attribute4">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-bolder">Attribute 5 </label>
-                        <input type="text" class="form-control" name="attribute5" id="Sector_Experirnce">
+                        <input type="text" class="form-control" name="attribute5" id="attribute5">
                     </div>
                     {{-- <div class="form-check">
                     <input class="form-check-input" type="checkbox" value=""

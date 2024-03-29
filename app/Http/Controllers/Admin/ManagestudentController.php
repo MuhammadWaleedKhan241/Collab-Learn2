@@ -15,12 +15,6 @@ class ManagestudentController extends controller
         return view('manage-student');
     }
 
-    // {
-    //     $student = Student::find($id);
-    //     return view('your-view', compact('student'));
-    // }
-
-
     public function store(Request $request)
     {
         //dd($request->all());
@@ -40,9 +34,7 @@ class ManagestudentController extends controller
         $data->email = $request->input('email');
         $data->roll_no = $request->input('roll_no');
         $data->phone = $request->input('phone');
-        // $data->password = $request->input('password');
         $data->password = bcrypt($request->input('password'));
-        // $data->confirm_password = $request->input('confirm_password');
         $data->confirm_password = bcrypt($request->input('confirm_password'));
         $data->address1 = $request->input('address1');
         $data->address2 = $request->input('address2');
@@ -52,18 +44,10 @@ class ManagestudentController extends controller
         $data->zip = $request->input('zip');
         $data->date_of_birth = $request->input('date_of_birth');
         $data->file = $request->input('file');
-
-        //$data->gender = implode(',', ['gender']);
         $data->gender = $request->has('gender') ? 'Male' : 'Female';
-
-        // $checkbox_data = $request->input('gender');
-        // $data->gender = implode($checkbox_data);
-
-
         $data->save();
         return back()->with('success', 'User created successfully!');
     }
-
 
     public function students()
 
@@ -72,7 +56,6 @@ class ManagestudentController extends controller
 
         return view('manage-student', compact('data'));
     }
-
 
     public function delete($id)
     {
@@ -87,7 +70,6 @@ class ManagestudentController extends controller
 
         return view('student-edit-form', compact('data'));
     }
-
 
     public function update(Request $request, $id)
     {
@@ -110,13 +92,7 @@ class ManagestudentController extends controller
         $data->zip = $request->input('zip');
         $data->date_of_birth = $request->input('date_of_birth');
         $data->file = $request->input('file');
-
-        $data->gender = implode(',', ['gender']);
-
-        // $checkbox_data = $request->input('gender');
-        // $data->gender = implode($checkbox_data);
-
-
+        $data->gender = $request->input('gender');
         $data->save();
         return redirect()->route('admin.managestudent')->with('success', 'Session Addeed Successfully!');
     }
