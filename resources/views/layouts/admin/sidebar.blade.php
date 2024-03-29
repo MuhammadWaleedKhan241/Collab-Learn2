@@ -3,8 +3,8 @@
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
             <a href="{{ route('admin.dashboard') }}" class="text-nowrap logo-img">
-
-                <img src="{{ asset('images/logos/light-logo.png') }}" class="light-logo" width="180" alt="" />
+                <img src="{{ asset('assets/images/logos/light-logo.png') }}" class="light-logo" width="180"
+                    alt="" />
             </a>
             <div class="close-btn d-lg-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                 <i class="ti ti-x fs-8 text-muted"></i>

@@ -156,14 +156,14 @@
                             <label for="validationTooltipUsername" class="form-label">Password</label>
                             <div class="input-group has-validation">
                                 <input type="text" class="form-control" id="password" name="password"
-                                    value="{{ $data->password }}">
+                                    value="">
                             </div>
                         </div>
                         <div class="col-md-6  position-relative">
                             <label for="validationTooltip03" class="form-label">Confirm
                                 Password</label>
-                            <input type="text" class="form-control" id="confirm_password" name="confirm_password"
-                                value="{{ $data->confirm_password }}">
+                            <input type="password" class="form-control" id="password_confirmation"
+                                name="password_confirmation" required autocomplete="new-password">
                         </div>
                     </div>
                     <div class="d-flex">
@@ -227,12 +227,12 @@
                             <br>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender[]"
+                                <input class="form-check-input" type="radio" name="gender"
                                     id="inlineRadio1"{{ $data->gender === 'Male' ? 'checked' : '' }} value="Male">
                                 <label class="form-check-label" for="inlineRadio1">Male</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender[]" id="inlineRadio2"
+                                <input class="form-check-input" type="radio" name="gender" id="inlineRadio2"
                                     {{ $data->gender === 'Female' ? 'checked' : '' }} value="Female">
                                 <label class="form-check-label" for="inlineRadio2">Female</label>
                             </div>

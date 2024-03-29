@@ -12,7 +12,7 @@ class AddSessionController extends controller
 
     {
         $sessioncode = str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT);
-        return view('add-session');
+        return view('add-session', compact('sessioncode'));
     }
 
     function store(Request $request)

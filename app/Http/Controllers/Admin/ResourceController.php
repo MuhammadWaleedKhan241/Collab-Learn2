@@ -32,7 +32,7 @@ class ResourceController extends controller
 
         $request->validate([
             'title' => 'required|string|max:255',
-            'file' => 'required|file|max:2048',
+            'file' => 'file|max:2048',
         ]);
 
 
@@ -41,10 +41,8 @@ class ResourceController extends controller
         $resource->session_id = $request->input('session_id');
         if ($request->hasFile('file')) {
             $path = Image::image_upload($request->file, 'resourses');
-        } else {
-            $path = null;
+            $resource->file = $path;
         }
-        $resource->file = $path;
         $resource->save();
 
         return redirect()->route('admin.resource', $request->input('session_id'))->with('success', 'Session Addeed Successfully!');

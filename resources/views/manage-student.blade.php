@@ -231,8 +231,8 @@
                             <div class="col-md-6  position-relative">
                                 <label for="validationTooltip03" class="form-label">Confirm
                                     Password</label>
-                                <input type="text" class="form-control" name="confirm_password"
-                                    id="confirm_password">
+                                <input type="password" class="form-control" id="password_confirmation"
+                                    name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
                         <div class="d-flex">
@@ -287,12 +287,12 @@
                                 <br>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gender" id="inlineRadio1"
-                                        value="">
+                                        value="Male">
                                     <label class="form-check-label" for="inlineRadio1">Male</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="" id="inlineRadio2"
-                                        value="option2">
+                                        value="Female">
                                     <label class="form-check-label" for="inlineRadio2">Female</label>
                                 </div>
                             </div>

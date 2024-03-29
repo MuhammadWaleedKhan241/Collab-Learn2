@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('roll_no')->nullable();
             $table->string('phone')->nullable();
             $table->string('password');
-            $table->string('confirm_password')->nullable();
             $table->string('address1')->nullable();
             $table->string('address2')->nullable();
             $table->string('country')->nullable();

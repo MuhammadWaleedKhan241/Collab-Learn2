@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\ManageStudent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ManagestudentController extends controller
 {
@@ -22,8 +23,8 @@ class ManagestudentController extends controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email',
-            'password' => 'required',
-            'confirm_password' => 'required',
+            'password' => 'required|confirmed',
+
         ]);
 
         $data = new ManageStudent();
@@ -34,8 +35,7 @@ class ManagestudentController extends controller
         $data->email = $request->input('email');
         $data->roll_no = $request->input('roll_no');
         $data->phone = $request->input('phone');
-        $data->password = bcrypt($request->input('password'));
-        $data->confirm_password = bcrypt($request->input('confirm_password'));
+        $data->password = Hash::make($request->input('password'));
         $data->address1 = $request->input('address1');
         $data->address2 = $request->input('address2');
         $data->country = $request->input('country');
@@ -44,7 +44,7 @@ class ManagestudentController extends controller
         $data->zip = $request->input('zip');
         $data->date_of_birth = $request->input('date_of_birth');
         $data->file = $request->input('file');
-        $data->gender = $request->has('gender') ? 'Male' : 'Female';
+        $data->gender = $request->input('gender');
         $data->save();
         return back()->with('success', 'User created successfully!');
     }
@@ -74,6 +74,11 @@ class ManagestudentController extends controller
     public function update(Request $request, $id)
     {
 
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+        ]);
         $data =  ManageStudent::find($id);
 
         $data->first_name = $request->input('first_name');
@@ -82,8 +87,9 @@ class ManagestudentController extends controller
         $data->email = $request->input('email');
         $data->roll_no = $request->input('roll_no');
         $data->phone = $request->input('phone');
-        $data->password = $request->input('password');
-        $data->confirm_password = $request->input('confirm_password');
+        if ($request->input('password')) {
+            $data->password = Hash::make($request->input('password'));
+        }
         $data->address1 = $request->input('address1');
         $data->address2 = $request->input('address2');
         $data->country = $request->input('country');

@@ -24,8 +24,7 @@ class ManagetutorController extends controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email',
-            'password' => 'required',
-            'confirm_password' => 'required',
+            'password' => 'required|confirmed',
         ]);
 
         $data = new ManageTutor();
@@ -37,7 +36,6 @@ class ManagetutorController extends controller
         $data->roll_no = $request->input('roll_no');
         $data->phone = $request->input('phone');
         $data->password = $request->input('password');
-        $data->confirm_password = $request->input('confirm_password');
         $data->address1 = $request->input('address1');
         $data->address2 = $request->input('address2');
         $data->country = $request->input('country');
@@ -72,7 +70,12 @@ class ManagetutorController extends controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
 
+        ]);
         $data =  ManageTutor::find($id);
 
         $data->first_name = $request->input('first_name');
@@ -81,8 +84,10 @@ class ManagetutorController extends controller
         $data->email = $request->input('email');
         $data->roll_no = $request->input('roll_no');
         $data->phone = $request->input('phone');
-        $data->password = $request->input('password');
-        $data->confirm_password = $request->input('confirm_password');
+        if ($request->input('password')) {
+            $data->password = $request->input('password');
+        }
+
         $data->address1 = $request->input('address1');
         $data->address2 = $request->input('address2');
         $data->country = $request->input('country');

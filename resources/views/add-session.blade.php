@@ -17,7 +17,8 @@
                     <h1 class="fs-7 fw-bold">Add New Session</h1>
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-bolder">Session Code </label>
-                        <input type="number" class="form-control" name="sessioncode" id="sessioncode">
+                        <input type="number" class="form-control" name="sessioncode" id="sessioncode"
+                            value="{{ $sessioncode }}">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-bolder">Attribute 1</label>
