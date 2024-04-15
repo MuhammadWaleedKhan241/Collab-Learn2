@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Student\Auth;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Image;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,15 +18,31 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-     public function show()
+    public function show()
     {
         $user = Auth::user();
-        return view('profile.student.edit');
+        return view('profile.student.edit', compact('user'));
+    }
+
+    public function uploadImage(Request $request)
+    {
+
+        $validatedData = $request->validate([
+
+            'profile' => 'required|file|mimes:jpeg,jpg,png',
+        ]);
+        $user = User::find(Auth::user()->id);
+        if ($request->hasFile('profile')) {
+            $path = Image::image_upload($request->profile, 'student/profile');
+        } else {
+            $path = null;
+        }
+        $user->profile_image = $path;
+        $user->save();
+        return redirect()->route('student.profile.upload');
     }
 
 
-
-    
 
     // public function edit(Request $request): View
     // {

@@ -9,4 +9,9 @@ class Resources extends Model
 {
     use HasFactory;
     protected $table = "resources";
+
+    public function session()
+    {
+        return $this->belongsTo(AddSession::class);
+    }
 }

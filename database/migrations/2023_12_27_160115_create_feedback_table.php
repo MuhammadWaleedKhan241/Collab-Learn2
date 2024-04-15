@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('gender')->notNullable();
             $table->enum('age', ['21-25', '26-30', '31-35', '36-40', '41-50']);
-            $table->unsignedBigInteger('experience');
-            $table->unsignedBigInteger('educatuionYear');
+            $table->bigInteger('experience');
+            $table->bigInteger('educatuionYear');
             $table->string('sectorexperiance')->notNullable();
             $table->string('geolocation')->notNullable();
             $table->string('useexperiencebefore')->notNullable();

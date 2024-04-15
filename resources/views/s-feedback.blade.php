@@ -1,5 +1,10 @@
 @extends('student.layouts.master')
 @section('content')
+<style>
+    :root{
+        --bs-font-sans-serif: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    }
+</style>
     <p class="fs-7 fw-bolder">Enter Feedback</p>
     @if ($errors->any())
         @foreach ($errors->all() as $error)
@@ -11,7 +16,7 @@
             <form action="{{ route('feedback.store') }}" method="POST" class="row g-3 col-12 m-auto bg-white rounded p-4">
                 @csrf
                 <div class="col-md-6 mb-3">
-                    <label class="form-label d-block fs-4 fw-bolder">Gender:</label>
+                    <label class="form-label d-block fs-4 fw-normal">Gender:</label>
                     <div class="form-check-inline">
                         <input class="form-check-input" type="radio" name="gender" id="" value="male">
                         <label class="form-check-label" for="flexRadioDefault1">
@@ -26,7 +31,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label d-block fs-4 fw-bolder">Age:</label>
+                    <label class="form-label d-block fs-4 fw-normal">Age:</label>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="age" id="age" value="21-25">
                         <label class="form-check-label" for="flexRadioDefault2">
@@ -59,13 +64,13 @@
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label fs-4 fw-bolder">Number of years of professional
+                    <label class="form-label fs-4 fw-normal">Number of years of professional
                         Experience:</label>
                     <input type="number" class="form-control" name="experience" id="experience" value="">
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label fs-4 fw-bolder">Number of years of formal
-                        education(including
+                    <label class="form-label fs-4 fw-normal">Number of years of formal
+                        education (including
                         your current
                         Master’s
                         programme):</label>
@@ -73,14 +78,14 @@
                         value="educationYear">
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label fs-4 fw-bolder">Sector of Experiance (in case of more than
+                    <label class="form-label fs-4 fw-normal">Sector of experience (in case of more than
                         one, please list all
                         sectors in
                         which you have worked previously):</label>
                     <textarea type="text" class="form-control" name="sectorexperiance" id="sector_experiance"></textarea>
                 </div>
                 <div class="col-md-6 mb-3 ">
-                    <label class="form-label fs-4 fw-bolder">Which geographical location are you
+                    <label class="form-label fs-4 fw-normal">Which geographical location are you
                         referring
                         to you in your
                         case study?
@@ -88,7 +93,7 @@
                     <input type="text" class="form-control" name="geolocation" id="geo_location" value="">
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label d-block fs-4 fw-bolder">Have you ever used your background
+                    <label class="form-label d-block fs-4 fw-normal">Have you ever used your background
                         experience in a
                         classroom learning
                         experience before? </label>
@@ -115,7 +120,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label d-block fs-4 fw-bolder">Did you find it useful?</label>
+                    <label class="form-label d-block fs-4 fw-normal">Did you find it useful?</label>
                     <div class="form-check form-check-inline ">
                         <input class="form-check-input" type="radio" name="useful" id="useful" value="Yes">
                         <label class="form-check-label" for="usefulYes">
@@ -136,7 +141,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label d-block fs-4 fw-bolder">Did using your own background
+                    <label class="form-label d-block fs-4 fw-normal">Did using your own background
                         experience help you understand Strategic Management better?</label>
                     <div class="form-check form-check-inline ">
                         <input class="form-check-input" type="radio" name="ownbackexpunderstandingstratmang"
@@ -161,7 +166,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label class="form-label d-block fs-4 fw-bolder">Did this session improve your
+                    <label class="form-label d-block fs-4 fw-normal">Did this session improve your
                         understanding of topics
                         related to
                         Strategic Management?</label>
@@ -188,33 +193,33 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <label class="form-label d-block fs-4 fw-bolder" for="explnyourlearn">Would you
+                    <label class="form-label d-block fs-4 fw-normal" for="explnyourlearn">Would you
                         like
                         to build your
                         experience into your learning on the course more? Please give reasons.</label>
                     <textarea rows="4" type="text" class="form-control" name="explainyourlearn" id="explain_your_learn"></textarea>
                 </div>
                 <div class="col-12">
-                    <label class="form-label d-block fs-4 fw-bolder" for="BackExpInClass">Did you like
+                    <label class="form-label d-block fs-4 fw-normal" for="BackExpInClass">Did you like
                         talking about
                         your background experience in the classroom?</label>
                     <textarea rows="4" type="text" class="form-control" name="backexpinclass" id="back_experience_in_class"></textarea>
                 </div>
                 <div class="col-12">
-                    <label class="form-label d-block fs-4 fw-bolder" for="LearnFromOther">Did you
+                    <label class="form-label d-block fs-4 fw-normal" for="LearnFromOther">Did you
                         learn
                         from other
                         people and their background experiences? Is so, how and if not, why?</label>
                     <textarea rows="4" type="text" class="form-control" name="learnfromother" id="learn_from_other"></textarea>
                 </div>
                 <div class="col-12">
-                    <label class="form-label d-block fs-4 fw-bolder" for="ImprovedInFuture">Which
+                    <label class="form-label d-block fs-4 fw-normal" for="ImprovedInFuture">Which
                         aspect(s) do you think
                         could be improved for the future?</label>
                     <textarea rows="4" type="text" class="form-control" name="improvedinfuture" id="improved_in_future"></textarea>
                 </div>
                 <div class="col-12">
-                    <label class="form-label d-block fs-4 fw-bolder" for="AnyOtherComment">Any other
+                    <label class="form-label d-block fs-4 fw-normal" for="AnyOtherComment">Any other
                         comments you would
                         like to make?</label>
                     <textarea rows="4" class="form-control" name="anyothercomment" id="any_other_comment"></textarea>
@@ -224,7 +229,7 @@
                         <input class="form-check-input" type="checkbox" name="permission" id="permission">
                         <label class="form-check-label fw-semibold" for="flexCheckChecked">
                             Your responses and submitted cases will be used anonymously for research and
-                            publication purposes.Please tick here for your consent for your comments and
+                            publication purposes. Please tick here for your consent for your comments and
                             data to be used
                             anonymously
                         </label>

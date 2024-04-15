@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Teacher\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Teacher\Teacher;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
@@ -26,8 +28,7 @@ class ChangePasswordController extends Controller
             'password' => 'required|min:8|confirmed',
         ]);
 
-        $user = Auth::user();
-
+        $user = Teacher::find(Auth::user()->id);
         // Check if the current password matches the user's actual password
         if (!Hash::check($request->current_password, $user->password)) {
             return back()->withErrors(['current_password' => 'The current password is incorrect.']);
@@ -37,6 +38,6 @@ class ChangePasswordController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect()->route('teacher.login')->with('success', 'Password changed successfully.');
+        return redirect()->route('teacher.dashboard')->with('success', 'Password changed successfully.');
     }
 }

@@ -22,4 +22,8 @@ class Comment extends Model
     {
         return $this->belongsTo(Admin::class, 'user_id');
     }
+    public function reply()
+    {
+        return $this->hasMany(CommentReply::class);
+    }
 }

@@ -14,8 +14,9 @@ class Image extends Model
     {
         $extension = $thumbnail->getClientOriginalExtension();
         $fileName = time() . rand(11111, 99999) . '.' . $extension;
-        $path = 'public/images/' . $destinationPath . '/';
-        $path = $thumbnail->storeAs($path, $fileName);
+        $success = $thumbnail->move(public_path() . '/assets/files/' . $destinationPath, $fileName);
+        // $path = 'public/images/' . $destinationPath . '/';
+        // $path = $thumbnail->storeAs($path, $fileName);
         return $fileName;
     }
 }

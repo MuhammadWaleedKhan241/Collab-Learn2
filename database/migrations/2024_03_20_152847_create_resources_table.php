@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('session_id');
             $table->string('title');
-            $table->string('name');
+            $table->string('file');
             $table->timestamps();
 
             $table->foreign('session_id')->references('id')->on('add_sessions')->onDelete('cascade');

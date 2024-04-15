@@ -3,7 +3,7 @@
 @endpush
 @section('content')
     <div class="container-fluid">
-        <p class="fs-6 fw-bolder">Case Studies</p>
+        <p class="fs-6 fw-bolder">Readings</p>
         <div class=" shadow-none mt-9 mb-0">
             <div class="table-responsive">
                 <table class="table text-nowrap align-middle mb-0">
@@ -27,8 +27,9 @@
                                     <td>
                                         <span>{{ $casestudy->title }}</span>
                                     </td>
+
                                     <td>
-                                        <a href="#">{{ $casestudy->file }}</a>
+                                        <a href="{{ asset(('assets/files/casestudy/'.$casestudy->file)) }}">{{ $casestudy->file }}</a>
                                     </td>
                                     <td>
                                         <h5><b>{{ $casestudy->user?->username }}</b></h5>

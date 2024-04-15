@@ -21,11 +21,12 @@ class AddSessionController extends controller
         $request->validate([
             //'year' => 'required',
             'sessioncode' => ['required', 'integer', 'digits:6', 'unique:add_sessions,sessioncode'],
-            'attribute1' => 'required',
-            'attribute2' => 'required',
-            'attribute3' => 'required',
-            'attribute4' => 'required',
-            'attribute5' => 'required',
+            'attribute1' => 'nullable',
+            'attribute2' => 'nullable',
+            'attribute3' => 'nullable',
+            'attribute4' => 'nullable',
+            'attribute5' => 'nullable',
+            'is_country' => 'nullable',
         ]);
 
 
@@ -39,6 +40,7 @@ class AddSessionController extends controller
         $data->attribute3 = $request->input('attribute3');
         $data->attribute4 = $request->input('attribute4');
         $data->attribute5 = $request->input('attribute5');
+        $data->is_country = $request->input('is_country') ?? 0;
 
         $data->save();
         return redirect()->route('admin.managesession')->with('success', 'Session Addeed Successfully!');

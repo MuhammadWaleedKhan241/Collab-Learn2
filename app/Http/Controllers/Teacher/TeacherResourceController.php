@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Resources;
 use App\Models\Image;
 use App\Models\Teacher\AddSession;
 use App\Models\Teacher\Resource;
@@ -45,5 +46,37 @@ class TeacherResourceController  extends Controller
         $data->save();
 
         return redirect()->back()->with('success', 'Data has been successfully inserted!');
+    }
+
+    public function edit($id)
+    {
+        $data =  Resources::find($id);
+        return view('teacher-edit-resources', compact('data'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'file' => 'file|max:2048',
+        ]);
+
+        $resource =  Resources::with('session')->find($id);
+        $resource->title = $request->input('title');
+        if ($request->hasFile('file')) {
+            $path = Image::image_upload($request->file, 'resources');
+            $resource->file = $path;
+        }
+        $resource->save();
+
+        return redirect()->route('teacher.view_resources', $resource->session_id)->with('success', 'Session Addeed Successfully!');
+    }
+
+    public function delete($id)
+    {
+        Resources::destroy($id);
+        return back();
     }
 }

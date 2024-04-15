@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('attribute4')->nullable();
             $table->string('attribute5')->nullable();
             $table->string('file')->nullable();
+            $table->string('country')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->foreign('session_id')->references('id')->on('add_sessions')->onDelete('CASCADE');
             $table->timestamps('');

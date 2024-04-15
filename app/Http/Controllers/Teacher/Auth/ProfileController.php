@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Teacher\Auth;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Image;
+use App\Models\Teacher\Teacher;
+use GuzzleHttp\RedirectMiddleware;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,13 +18,28 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    // 
+    //
     public function show()
     {
         $user = Auth::user();
-        return view('profile.teacher.edit');
+        return view('profile.teacher.edit', compact('user'));
     }
-    
+    public function uploadImage(Request $request)
+    {
+        $validatedData = $request->validate([
+
+            'profile' => 'required|file|mimes:jpeg,jpg,png',
+        ]);
+        $user = Teacher::find(Auth::user()->id);
+        if ($request->hasFile('profile')) {
+            $path = Image::image_upload($request->profile, 'teacher/profile');
+        } else {
+            $path = null;
+        }
+        $user->profile_image = $path;
+        $user->save();
+        return redirect()->route('teacher.profile.show');
+    }
     //public function edit(Request $request): View
     // {
     //     return view('profile.edit', [
@@ -57,7 +75,7 @@ class ProfileController extends Controller
     //     $user = $request->user();
 
     //     Auth::logout();
-    
+
     //     $user->delete();
 
     //     $request->session()->invalidate();

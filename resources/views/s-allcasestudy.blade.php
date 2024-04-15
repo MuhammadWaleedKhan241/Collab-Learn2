@@ -1,6 +1,6 @@
 @extends('student.layouts.master')
 @section('content')
-    <p class="fs-6 fw-bolder"> Case Studies</p>
+    <p class="fs-6 fw-bolder"> Readings</p>
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -28,7 +28,7 @@
                                     <tr>
                                         <td>{{ $record->session?->sessioncode }}</td>
                                         <td>{{ $record->title }}</td>
-                                        <td>{{ $record->file }}</td>
+                                        <td><a href="{{ asset(('assets/files/casestudy/'.$record->file)) }}">{{ $record->file }}</a></td>
                                         <td>{{ $record->user->username }}</td>
 
                                         <td>

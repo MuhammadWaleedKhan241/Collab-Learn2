@@ -11,6 +11,25 @@ class StudentFeedbackController extends Controller
     public function store(Request $request)
     {
 
+        $request->validate([
+            'gender' => 'required',
+            'age' => 'required',
+            'experience' => 'required|numeric|gt:0',
+            'educatuionYear' => 'required|numeric|gt:0',
+            'sectorexperiance' => 'required',
+            'geolocation' => 'required',
+            'useexperiencebefore' => 'required',
+            'useful' => 'required',
+            'ownbackexpunderstandingstratmang' => 'required',
+            'understandingsm' => 'required',
+            'explainyourlearn' => 'required',
+            'backexpinclass' => 'required',
+            'learnfromother' => 'required',
+            'improvedinfuture' => 'required',
+            'anyothercomment' => 'required',
+            'permission' => 'required',
+        ]);
+
         $user_id = auth()->id();
         $data = new Feedback();
         $data->user_id = $user_id;

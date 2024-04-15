@@ -3,6 +3,7 @@
 @endpush
 @section('content')
     <div class="container-fluid">
+        @include('common.Alerts.flash-messages')
         <div class="col-12">
             <div class="p-4">
                 <div class="d-flex justify-content-between">

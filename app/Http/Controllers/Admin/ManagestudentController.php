@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\ManageStudent;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,15 +16,30 @@ class ManagestudentController extends controller
 
         return view('manage-student');
     }
+    public function create()
+    {
+        // $data = ManageStudent::with(['sessions'])->get();
+        return view('manage-student-create');
+    }
 
     public function store(Request $request)
     {
-        //dd($request->all());
+
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required|confirmed',
+            'roll_no' => 'required|numeric',
+            'phone' => 'required',
+            'address1' => 'required',
+            'country' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'date_of_birth' => 'required',
+            'zip' => 'required',
+            'gender' => 'required',
 
         ]);
 
@@ -46,7 +62,7 @@ class ManagestudentController extends controller
         $data->file = $request->input('file');
         $data->gender = $request->input('gender');
         $data->save();
-        return back()->with('success', 'User created successfully!');
+        return redirect()->route('admin.managestudent')->with('success', 'Student Addeed Successfully!');
     }
 
     public function students()
@@ -78,6 +94,16 @@ class ManagestudentController extends controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email',
+            'username' => 'required',
+            'roll_no' => 'required|numeric',
+            'phone' => 'required',
+            'address1' => 'required',
+            'country' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'date_of_birth' => 'required',
+            'zip' => 'required',
+            'gender' => 'required',
         ]);
         $data =  ManageStudent::find($id);
 
@@ -88,6 +114,9 @@ class ManagestudentController extends controller
         $data->roll_no = $request->input('roll_no');
         $data->phone = $request->input('phone');
         if ($request->input('password')) {
+            $request->validate([
+                'password' => 'required|confirmed',
+            ]);
             $data->password = Hash::make($request->input('password'));
         }
         $data->address1 = $request->input('address1');
@@ -100,6 +129,6 @@ class ManagestudentController extends controller
         $data->file = $request->input('file');
         $data->gender = $request->input('gender');
         $data->save();
-        return redirect()->route('admin.managestudent')->with('success', 'Session Addeed Successfully!');
+        return redirect()->route('admin.managestudent')->with('success', 'Student Updated Successfully!');
     }
 }

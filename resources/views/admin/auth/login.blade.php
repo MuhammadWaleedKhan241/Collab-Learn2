@@ -14,9 +14,17 @@
     <meta name="keywords" content="NettaAdSoka" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--  Favicon -->
-    <link rel="shortcut icon" type="image/png" href={{ asset('images/logos/favicon.ico') }} />
+    <link rel="shortcut icon" type="image/png" href={{ asset('images/logos/favicon.png') }} />
     <!-- Core Css -->
+    <link rel="stylesheet" href={{ asset('css/style.css') }} />
     <link id="themeColors" rel="stylesheet" href={{ asset('css/style.min.css') }} />
+    <style>
+        .bg-login
+        {
+            background: url('images/backgrounds/bg-sudent-signup.jpg');
+            background-size:cover;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,25 +36,24 @@
         <div class="position-relative overflow-hidden radial-gradient min-vh-100">
             <div class="position-relative z-index-5">
                 <div class="row">
-                    <div class="col-xl-7 col-xxl-8">
+                    <div class="col-xl-7 col-xxl-8 bg-login">
                         <a href="#" class="text-nowrap logo-img d-block px-4 py-9 w-100">
                             <!-- <img src="assets/images/logos/dark-logo.png" width="180" alt=""> -->
                         </a>
                         <div class="d-none d-xl-flex align-items-center justify-content-center"
                             style="height: calc(100vh - 80px);">
-                            <img src={{ asset('images/backgrounds/login-security.svg') }} alt=""
-                                class="img-fluid" width="500">
+
                         </div>
                     </div>
                     <div class="col-xl-5 col-xxl-4">
                         <div
                             class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
                             <div class="col-sm-8 col-md-6 col-xl-9">
-                                <h1 class="p-1 fw-bolder text-center">Collablearn</h1>
-                                <p class="text-center">Peer-led collaborative learning and teaching</p>
+                                <img src="{{ asset('images/backgrounds/collablearn-logo.png') }}" alt=""
+                                class="img-fluid" width="500">
 
                                 <div class="row">
-                                    <h2 class="mb-5 pt-3 fs-7 fw-bolder text-center ">Admin Login</h2>
+                                    <p class="mb-5 pt-3 fs-7 fw-semibold text-center ">Admin Login</p>
                                 </div>
 
                                 <form method="POST" action="{{ route('admin.submit-login') }}">

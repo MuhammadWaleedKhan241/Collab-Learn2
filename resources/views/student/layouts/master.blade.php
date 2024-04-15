@@ -14,7 +14,7 @@
     <meta name="keywords" content="NettaAdSoka" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--  Favicon -->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon.ico') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon.png') }}" />
     <!-- Owl Carousel  -->
     <link rel="stylesheet" href="{{ asset('libs/owl.carousel/dist/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet"
@@ -22,10 +22,10 @@
         integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
 
     <!-- Core Css -->
-    <link id="themeColors" rel="stylesheet" href="{{ asset('css/style.min.css') }}" />
-    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon.ico') }}" />
+
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon.png') }}" />
     <!-- Core Css -->
-    <link id="themeColors" rel="stylesheet" href={{ asset('css/style.min.css') }} />
+
     <link href={{ asset('https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css') }} rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jqvmap.min.css') }}">
@@ -69,6 +69,7 @@
     <script src="{{ asset('libs/owl.carousel/dist/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('js/dashboard.js') }}"></script>
+    @stack('page-level-script')
 </body>
 
 </html>

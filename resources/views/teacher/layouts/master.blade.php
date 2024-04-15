@@ -15,7 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--  Favicon -->
 
-    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon.ico') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon.png') }}" />
     <!-- Core Css -->
     <link id="themeColors" rel="stylesheet" href={{ asset('css/style.min.css') }} />
     <link href={{ asset('https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css') }} rel="stylesheet">
@@ -67,57 +67,11 @@
 
 
 
-    <script src="{{ asset('https://code.jquery.com/jquery-latest.min.js') }}"></script>
+    {{-- <script src="{{ asset('https://code.jquery.com/jquery-latest.min.js') }}"></script>
     <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.min.js') }}"></script>
-    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.world.js') }}"></script>
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.world.js') }}"></script> --}}
 
-    <script type="text/javascript">
-        var countries = '';
-
-        function getCountryData() {
-            // $.ajax({
-            //     url: 'countries.json',
-            //     type: 'get',
-            //     success: function (res) {
-            //         countries = JSON.parse(res);
-            //     }
-            // });
-            $.ajax({
-                url: "countries.json",
-                type: 'get',
-                dataType: 'json', // Specify the data type
-                success: function(res) {
-                    console.log(res); // Verify the response
-                    countries = res; // Assign the response directly
-                },
-                error: function(xhr, status, error) {
-                    console.error("Error fetching country data:", error);
-                }
-            });
-        }
-
-        getCountryData();
-
-        $(document).ready(function() {
-            $("#vmap").vectorMap({
-                map: 'world_en',
-                backgroundColor: '#215196',
-                borderColor: '#38a3a5',
-                color: '#f6fff8',
-                hoverOpacity: 0.7,
-                selectedColor: '#38a3a5',
-                enableZoom: true,
-                enableDrag: true,
-                showTooltip: true,
-                normalizeFunction: 'polynomial',
-                onLabelShow: function(event, label, code) {
-                    code = code.toUpperCase();
-                    country_name = countries[code];
-                    label.html('<strong>' + country_name + '</strong>');
-                }
-            });
-        });
-    </script>
+    @stack('page-level-script')
 </body>
 
 </html>

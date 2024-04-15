@@ -3,6 +3,7 @@
 @endpush
 @section('content')
     <div class="container-fluid bg-light">
+
         @if ($errors->any())
             @foreach ($errors->all() as $error)
                 <div class="alert alert-danger">{{ $error }}</div>
@@ -40,13 +41,12 @@
                         <label class="form-label fw-bolder">Attribute 5 </label>
                         <input type="text" class="form-control" name="attribute5" id="attribute5">
                     </div>
-                    {{-- <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value=""
-                        id="flexCheckChecked">
-                    <label class="form-check-label" for="flexCheckChecked" name="country-field">
-                        Country Field
-                    </label>
-                </div> --}}
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="1" name="is_country" id="flexCheckChecked">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Country Field
+                        </label>
+                      </div>
                     <div class="col-2 d-flex">
                         <button type="submit" class="btn btn-outline-success mt-3 me-2 ">Submit</button>
                         <button type="button" class="btn btn-outline-danger mt-3 ">Cancel</button>

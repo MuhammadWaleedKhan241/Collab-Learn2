@@ -14,9 +14,16 @@
     <meta name="keywords" content="NettaAdSoka" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--  Favicon -->
-    <link rel="shortcut icon" type="image/png" href={{ asset('images/logos/favicon.ico') }} />
+    <link rel="shortcut icon" type="image/png" href={{ asset('images/logos/favicon.png') }} />
     <!-- Core Css -->
     <link id="themeColors" rel="stylesheet" href={{ asset('css/style.min.css') }} />
+    <style>
+        .bg-login
+        {
+            background: url('../images/backgrounds/bg-sudent-signup.jpg');
+            background-size:cover;
+        }
+    </style>
 </head>
 
 <body>
@@ -34,14 +41,13 @@
         <div class="position-relative overflow-hidden radial-gradient min-vh-100">
             <div class="position-relative z-index-5">
                 <div class="row">
-                    <div class="col-xl-7 col-xxl-8">
-                        <a href="index.html" class="text-nowrap logo-img d-block px-4 py-9 w-100">
+                    <div class="col-xl-7 col-xxl-8 bg-login">
+                        <a href="#" class="text-nowrap logo-img d-block px-4 py-9 w-100">
                             <!-- <img src="assets/images/logos/dark-logo.png" width="180" alt=""> -->
                         </a>
                         <div class="d-none d-xl-flex align-items-center justify-content-center"
                             style="height: calc(100vh - 80px);">
-                            <img src="assets/images/backgrounds/login-security.svg" alt="" class="img-fluid"
-                                width="500">
+
                         </div>
                     </div>
 
@@ -50,8 +56,8 @@
                             class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
                             <div class="col-sm-8 col-md-6 col-xl-9">
 
-                                <h2 class=" text-center fs-7 fw-bolder">Collablearn</h2>
-                                <p class=" text-center">Peer-led collaborative learning and teaching</p>
+                                <img src="{{ asset('images/backgrounds/collablearn-logo.png') }}" alt=""
+                                class="img-fluid" width="500">
                                 <div>
                                     <p class="text-center fs-7 fw-semibold">Student Register</p>
                                 </div>
@@ -115,7 +121,12 @@
                                             name="password_confirmation" required autocomplete="new-password">
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary">Register</button>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <button type="submit" class="btn btn-primary">Register</button>
+                                        <p class="fs-4 mb-0 text-dark">have an Account<a class="text-primary fw-medium ms-2"
+                                            href="{{ route('student.login') }}">Login</a></p>
+
+                                    </div>
                                 </form>
                             </div>
                         </div>

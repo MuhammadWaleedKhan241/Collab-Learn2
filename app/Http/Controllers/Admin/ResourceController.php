@@ -40,7 +40,7 @@ class ResourceController extends controller
         $resource->title = $request->input('title');
         $resource->session_id = $request->input('session_id');
         if ($request->hasFile('file')) {
-            $path = Image::image_upload($request->file, 'resourses');
+            $path = Image::image_upload($request->file, 'resources');
             $resource->file = $path;
         }
         $resource->save();

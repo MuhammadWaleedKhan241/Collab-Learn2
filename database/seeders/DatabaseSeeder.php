@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('secret'),
         ]);
         \App\Models\Teacher\Teacher::create([
-            'name' => 'teacher',
+            'username' => 'teacher',
             'email' => 'teacher@teacher.com',
             'password' => Hash::make('secret'),
         ]);

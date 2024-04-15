@@ -55,7 +55,12 @@ use App\Http\Controllers\Student\StudentFeedbackController;
 use App\Http\Controllers\Student\StudentMyCaseStudyCommentController;
 use App\Http\Controllers\Student\StudentMyCaseStudyController;
 use App\Http\Controllers\Student\AuthStudentController;
+use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
+use Illuminate\Support\Facades\Artisan;
 
+// Route::get('/artisan', function () {
+//     Artisan::call("migrate");
+// });
 
 Route::get('/', [HomeController::class, 'show'])->name('home');
 
@@ -64,14 +69,15 @@ Route::get('/', [HomeController::class, 'show'])->name('home');
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminAuth::class, 'create'])->name('admin.login');
     Route::post('login', [AdminAuth::class, 'store'])->name('admin.submit-login');
-    Route::get('profile', [AdminProfileController::class, 'show'])->name('admin.profile.show');
-    Route::get('/change-password', [AdminChangePassword::class, 'show'])->name('admin.password.change');
-    Route::post('/change-password', [AdminChangePassword::class, 'update'])->name('password.update');
-    Route::POST('logout', [AdminAuth::class, 'destroy'])->name('admin.logout');
 
 
     Route::middleware('auth:admin')->group(function () {
+        Route::get('profile', [AdminProfileController::class, 'show'])->name('admin.profile.show');
+        Route::get('/change-password', [AdminChangePassword::class, 'show'])->name('admin.password.change');
+        Route::post('/change-password', [AdminChangePassword::class, 'update'])->name('password.update');
+        Route::POST('logout', [AdminAuth::class, 'destroy'])->name('admin.logout');
         Route::get('dashboard', [DashboardController::class, 'show'])->name('admin.dashboard');
+        Route::get('get-countries', [DashboardController::class, 'graph_countries'])->name('admin.countries');
         Route::get('casestudy', [CasestudiesController::class, 'show'])->name('admin.casestudy');
 
         // Route::get('sessions', [ManagesessionController::class, 'show'])->name('admin.managesession');
@@ -89,6 +95,7 @@ Route::prefix('admin')->group(function () {
         Route::put('/admin/resource/{id}', [ResourceController::class, 'update'])->name('admin.update.resource');
 
         Route::get('managestudent', [ManagestudentController::class, 'show'])->name('admin.managestudent');
+        Route::get('managestudent/create', [ManagestudentController::class, 'create'])->name('admin.managestudent_create');
         //Route::post('/submit-form', [ManagestudentController::class, 'store'])->name('student.submit.form');
         Route::get('managestudents', [ManagestudentController::class, 'students'])->name('admin.managestudent');
         Route::post('/managestudents', [ManagestudentController::class, 'store'])->name('admin.student_submit');
@@ -98,17 +105,21 @@ Route::prefix('admin')->group(function () {
 
         // Route::get('managetutor', [ManagetutorController::class, 'tutor'])->name('admin.managetutor');
         Route::get('managetutor', [ManagetutorController::class, 'show'])->name('admin.managetutor');
+        Route::get('managetutor/create', [ManagetutorController::class, 'create'])->name('admin.managetutor_create');
         Route::post('/managetutor', [ManagetutorController::class, 'store'])->name('admin.tutor.submit');
         Route::get('managetutor/edit/{id}', [ManagetutorController::class, 'edit'])->name('admin.edit.tutor');
         Route::post('managetutor/update/{id}', [ManagetutorController::class, 'update'])->name('admin.update.tutor');
         Route::get('managetutor/delete/{id}', [ManagetutorController::class, 'delete'])->name('admin.delete.tutor');
 
         Route::get('feedback', [FeedbackController::class, 'show'])->name('admin.feedback');
-        Route::get('feedback-details/{id}', [FeedbackDetailController::class, 'show'])->name('feedback-detail');
+        // Route::get('feedback-details/{id}', [FeedbackDetailController::class, 'show'])->name('feedback-detail');
         Route::get('feedback-details/{id}', [FeedbackDetailController::class, 'show'])->name('admin.feedback-detail');
 
         Route::get('/comments/{id}', [CommentController::class, 'show'])->name('admin.comments');
         Route::post('/comment', [CommentController::class, 'store'])->name('admin.casestudy.comment-submit');
+
+        Route::get('/reply_comments/{id}', [CommentController::class, 'reply'])->name('admin.comment_reply');
+        Route::post('/reply_comment', [CommentController::class, 'replyStore'])->name('admin.comment_reply-submit');
     });
 });
 
@@ -119,10 +130,7 @@ Route::prefix('teacher')->group(function () {
     Route::post('register', [TeacherAuthReg::class, 'store'])->name('teacher.submit-register');
     Route::get('/', [TeacherAuth::class, 'create'])->name('teacher.login');
     Route::post('login', [TeacherAuth::class, 'store'])->name('teacher.submit-login');
-    Route::get('profile', [TachereProfileController::class, 'show'])->name('teacher.profile.show');
-    Route::get('change-password', [TeacherChangePassword::class, 'show'])->name('teacher.password.change');
-    Route::post('change-password', [TeacherChangePassword::class, 'update'])->name('password.update');
-    Route::post('logout', [TeacherAuth::class, 'destroy'])->name('teacher.logout');
+
 
     // Route::get('forgot-password', [TeacherAuthPassReset::class, 'create'])->name('password.request');
     // Route::post('forgot-password', [TeacherAuthPassReset::class, 'store'])->name('password.email');
@@ -130,7 +138,14 @@ Route::prefix('teacher')->group(function () {
     // Route::post('reset-password', [TeacherAuthNewPass::class, 'store'])->name('password.store');
 
     Route::middleware('auth:teacher')->group(function () {
+        Route::get('profile', [TachereProfileController::class, 'show'])->name('teacher.profile.show');
+        Route::post('profile', [TachereProfileController::class, 'uploadImage'])->name('teacher.profile.upload');
+        Route::get('change-password', [TeacherChangePassword::class, 'show'])->name('teacher.password.change');
+        Route::post('change-password', [TeacherChangePassword::class, 'update'])->name('teacher.password.update');
+        Route::post('logout', [TeacherAuth::class, 'destroy'])->name('teacher.logout');
         Route::get('/dashboard', [TeacherDashboardController::class, 'show'])->name('teacher.dashboard');
+        Route::get('/session-dashboard/{id}', [TeacherDashboardController::class, 'sessionDashboard'])->name('teacher.session_dashboard');
+        Route::get('get-countries', [TeacherDashboardController::class, 'graph_countries'])->name('teacher.countries');
         Route::get('/casestudies', [TeacherAllCaseStudyController::class, 'show'])->name('teacher.casestudy');
         Route::get('/session-casestudies/{id}', [TeacherAllCaseStudyController::class, 'sessionCaseStudy'])->name('teacher.session.casestudy');
         Route::get('/sessions', [TeacherSessionController::class, 'show'])->name('teacher.session');
@@ -141,17 +156,21 @@ Route::prefix('teacher')->group(function () {
 
         Route::post('/add-resources', [TeacherResourceController::class, 'store'])->name('add_resources');
 
-        Route::get('/teacher/resource/{id}/edit', [TeacherResourceController::class, 'edit'])->name('teacher.edit.resource');
+        Route::get('/resource/{id}/edit', [TeacherResourceController::class, 'edit'])->name('edit_resource');
 
-        Route::delete('/teacher/resource/{id}', [TeacherResourceController::class, 'destroy'])->name('teacher.delete.resource');
+        Route::delete('/resource/{id}', [TeacherResourceController::class, 'delete'])->name('delete_resource');
 
-        Route::put('/teacher/resource/{id}', [TeacherResourceController::class, 'update'])->name('teacher.update.resource');
+        Route::put('/resource/{id}', [TeacherResourceController::class, 'update'])->name('update_resource');
 
 
         Route::get('/comments/{id}', [TeacherCommentController::class, 'show'])->name('teacher.comments');
         Route::post('/comment', [TeacherCommentController::class, 'store'])->name('teacher.casestudy.comment-submit');
+        Route::get('/reply_comments/{id}', [TeacherCommentController::class, 'reply'])->name('teacher.comment_reply');
+        Route::post('/reply_comment', [TeacherCommentController::class, 'replyStore'])->name('teacher.comment_reply-submit');
         // Route::post('/form-submit', [TeacherResourceController::class, 'store'])->name('form.submit');
-
+        Route::get('/about', [TeacherDashboardController::class, 'about'])->name('teacher.about');
+        Route::get('/help', [TeacherDashboardController::class, 'help'])->name('teacher.help');
+        Route::get('/contact', [TeacherDashboardController::class, 'contact'])->name('teacher.contact');
 
         //Route::get('/readComments/{session}/{studentId}', [TeacherCommentController::class, 'show'])->name('teacher.comments');
 
@@ -165,10 +184,7 @@ Route::prefix('student')->group(function () {
     Route::post('register', [StudentAuthReg::class, 'store'])->name('student.submit-register');
     Route::get('/', [StudentAuth::class, 'create'])->name('student.login');
     Route::post('login', [StudentAuth::class, 'store'])->name('student.submit-login');
-    Route::get('profile', [StudentProfileController::class, 'show'])->name('student.profile');
-    Route::get('change-password', [StudentChangePassword::class, 'show'])->name('student.password.change');
-    Route::post('change-password', [StudentChangePassword::class, 'update'])->name('password.update');
-    Route::post('logout', [StudentAuth::class, 'destroy'])->name('student.logout');
+
 
     // Route::get('forgot-password', [StudentAuthPassReset::class, 'create'])->name('password.request');
     // Route::post('forgot-password', [StudentAuthPassReset::class, 'store'])->name('password.email');
@@ -176,14 +192,25 @@ Route::prefix('student')->group(function () {
     // Route::post('reset-password', [StudentAuthNewPass::class, 'store'])->name('password.store');
 
     Route::middleware('auth')->group(function () {
+        Route::get('profile', [StudentProfileController::class, 'show'])->name('student.profile');
+        Route::post('profile', [StudentProfileController::class, 'uploadImage'])->name('student.profile.upload');
+        Route::get('change-password', [StudentChangePassword::class, 'show'])->name('student.password.change');
+        Route::post('change-password', [StudentChangePassword::class, 'update'])->name('password.update');
+        Route::post('logout', [StudentAuth::class, 'destroy'])->name('student.logout');
         Route::get('/casestudies', [StudentMyCaseStudyController::class, 'show'])->name('student.casestudy');
+        Route::get('/casestudies/create', [StudentMyCaseStudyController::class, 'create'])->name('student.casestudy-create');
         Route::post('/submit', [StudentMyCaseStudyController::class, 'store'])->name('student.submit.casestudy');
         Route::get('/all-casestudies', [StudentAllcasestudyController::class, 'show'])->name('student.allcasestudies');
         Route::get('/feedback', [StudentFeedbackController::class, 'show'])->name('student.feedback');
         Route::get('/comment/{id}', [StudentMyCaseStudyCommentController::class, 'show'])->name('student.casestudy.comment');
         Route::post('/comment', [StudentMyCaseStudyCommentController::class, 'store'])->name('student.casestudy.comment-submit');
+        Route::get('/reply_comment/{id}', [StudentMyCaseStudyCommentController::class, 'reply'])->name('student.casestudy.comment_reply');
+        Route::post('/reply_comment', [StudentMyCaseStudyCommentController::class, 'replyStore'])->name('student.casestudy.comment_reply.reply-submit');
         Route::post('/store', [StudentFeedbackController::class, 'store'])->name('feedback.store');
 
+        Route::get('/about', [StudentDashboardController::class, 'about'])->name('student.about');
+        Route::get('/help', [StudentDashboardController::class, 'help'])->name('student.help');
+        Route::get('/contact', [StudentDashboardController::class, 'contact'])->name('student.contact');
         // Route::get('/submitted-case-studies', [StudentMyCaseStudyController::class, 'showSubmittedCaseStudies'])->name('submitted.case.studies');
 
         // Route::get('profile',[StudentProfileController::class, 'show'])->name('auth.profile');

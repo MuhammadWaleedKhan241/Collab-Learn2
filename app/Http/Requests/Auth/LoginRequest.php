@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -43,12 +44,16 @@ class LoginRequest extends FormRequest
         $this->ensureIsNotRateLimited();
         // if (! Auth::guard('admin')->attempt($this->only('email', 'password'))) {
         if (!Auth::guard('web')->attempt($this->only('session_code', 'email', 'password'))) {
-            //dd('true');
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
             ]);
+        }
+        $user = User::find(Auth::user()->id);
+        if ($user->session_code == null) {
+            $user->session_code = $this->session_code;
+            $user->save();
         }
 
         RateLimiter::clear($this->throttleKey());

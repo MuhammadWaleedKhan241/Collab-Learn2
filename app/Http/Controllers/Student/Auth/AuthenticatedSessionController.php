@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Student\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Teacher\AddSession;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
@@ -25,6 +28,17 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        $session = AddSession::query()->where('sessioncode', $request->session_code)->first();
+        if (!$session) {
+            throw ValidationException::withMessages([
+                'session_code' => 'session code may not exists',
+            ]);
+        }
+        $user = User::where('email', $request->email)->whereNull('session_code')->first();
+        if ($user) {
+            $user->session_code = $request->session_code;
+            $user->save();
+        }
         $request->authenticate();
         $request->session()->regenerate();
         return redirect()->route('student.casestudy');
@@ -78,7 +92,7 @@ class AuthenticatedSessionController extends Controller
     // }
     public function destroy(Request $request): RedirectResponse
     {
-        Auth::guard('teacher')->logout();
+        Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 

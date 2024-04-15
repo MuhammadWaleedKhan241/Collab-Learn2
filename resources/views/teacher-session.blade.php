@@ -1,6 +1,7 @@
 @extends('teacher.layouts.master')
 @section('content')
     <div class="row">
+        @include('common.Alerts.flash-messages')
         <div class="col-12">
             <div class="card">
                 <div class="card-body p-4">
@@ -34,16 +35,17 @@
                                                 <h5>{{ $item->sessioncode }}</h5>
                                                 <!-- Assuming 'code' is a field in your database -->
                                             </td>
-                                            <td>
-                                                <a href="{{ route('teacher.session.casestudy', $item->id) }}" type="button"
-                                                    class="btn btn-outline-success">Case Studies</a>
-                                            </td>
+
                                             <td>
                                                 <a href="{{ route('teacher.view_resources', $item->id) }}" type="button"
                                                     class="btn btn-outline-success">Resources</a>
                                             </td>
                                             <td>
-                                                <a href="{{ route('teacher.dashboard') }}" type="button"
+                                                <a href="{{ route('teacher.session.casestudy', $item->id) }}" type="button"
+                                                    class="btn btn-outline-success">Readings</a>
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('teacher.session_dashboard', $item->id) }}" type="button"
                                                     class="btn btn-outline-success">Dashboard</a>
                                             </td>
                                             <td>

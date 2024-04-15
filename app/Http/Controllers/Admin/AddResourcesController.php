@@ -18,16 +18,16 @@ class AddResourcesController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'title' => 'required|string|max:255',
-            'file' => 'required|file|max:2048',
+            'file' => 'required|file|mimes:pdf,doc,docx|max:10240', // Example validation for file uploads
         ]);
 
         $resource = new Resources();
         $resource->title = $request->input('title');
         $resource->session_id = $request->input('session_id');
         if ($request->hasFile('file')) {
-            $path = Image::image_upload($request->file, 'resourses');
+            $path = Image::image_upload($request->file, 'resources');
         } else {
             $path = null;
         }
@@ -37,3 +37,6 @@ class AddResourcesController extends Controller
         return redirect()->route('admin.resource', $request->input('session_id'))->with('success', 'Resource added successfully!');
     }
 }
+
+
+//waleed

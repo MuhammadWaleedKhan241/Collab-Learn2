@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();;
             $table->string('username');
-            $table->string('email');
+            $table->string('education')->nullable();
+            $table->string('email')->nullable();;
             $table->timestamp('email_verified_at')->nullable();
             $table->string('roll_no')->nullable();
             $table->string('phone')->nullable();
+            $table->string('specialization')->nullable();
             $table->string('password');
             $table->string('confirm_password')->nullable();
             $table->string('address1')->nullable();
@@ -31,6 +33,7 @@ return new class extends Migration
             $table->date('date_of_birth')->nullable();
             $table->string('file')->nullable();
             $table->enum('gender', ['male', 'female'])->nullable();
+            $table->string('profile_image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

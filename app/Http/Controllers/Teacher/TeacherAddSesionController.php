@@ -26,6 +26,7 @@ class TeacherAddSesionController extends Controller
             'attribute3' => 'nullable',
             'attribute4' => 'nullable',
             'attribute5' => 'nullable',
+            'is_country' => 'nullable',
         ]);
 
 
@@ -40,6 +41,7 @@ class TeacherAddSesionController extends Controller
         $data->attribute3 = $request->input('attribute3');
         $data->attribute4 = $request->input('attribute4');
         $data->attribute5 = $request->input('attribute5');
+        $data->is_country = $request->input('is_country') ?? 0;
 
         $data->save();
         return redirect()->route('teacher.session')->with('success', 'Session Addeed Successfully!');

@@ -22,8 +22,14 @@
                             aria-expanded="false">
                             <div class="d-flex align-items-center">
                                 <div class="user-profile-img">
+                                    @if (auth()->user()->profile_image)
+                                    <img src={{asset('assets/files/teacher/profile/'.auth()->user()->profile_image) }} class="rounded-circle"
+                                        width="35" height="35" alt="">
+                                    @else
                                     <img src={{ asset('images/profile/user-1.jpg') }} class="rounded-circle"
                                         width="35" height="35" alt="">
+
+                                    @endif
                                 </div>
                             </div>
                         </a>

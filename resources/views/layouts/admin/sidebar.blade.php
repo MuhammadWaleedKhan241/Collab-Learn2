@@ -1,9 +1,9 @@
 <aside class="left-sidebar">
     <!-- Sidebar scroll-->
     <div>
-        <div class="brand-logo d-flex align-items-center justify-content-between">
+        <div class="brand-logo bg-white d-flex align-items-center justify-content-between">
             <a href="{{ route('admin.dashboard') }}" class="text-nowrap logo-img">
-                <img src="{{ asset('assets/images/logos/light-logo.png') }}" class="light-logo" width="180"
+                <img src="{{ asset('images/logos/collablearn-logo.png') }}" class="light-logo d-block" width="180"
                     alt="" />
             </a>
             <div class="close-btn d-lg-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">

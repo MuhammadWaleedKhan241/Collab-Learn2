@@ -35,7 +35,7 @@ class RegisteredUserController extends Controller
             'session_code' => ['required', 'integer', 'digits:6'],
             'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed'],
         ]);
         // dd($data);
 

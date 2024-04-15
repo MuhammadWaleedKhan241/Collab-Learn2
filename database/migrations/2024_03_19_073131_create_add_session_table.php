@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('attribute3')->nullable();
             $table->string('attribute4')->nullable();
             $table->string('attribute5')->nullable();
+            $table->tinyInteger('is_country')->default(0);
             // $table->boolean('country_field')->default(false);
             $table->timestamps();
         });
